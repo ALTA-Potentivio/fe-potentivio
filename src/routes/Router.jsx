@@ -1,15 +1,15 @@
 import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
-import App from "../pages/App";
 import Welcome from "../pages/Welcome";
+import Login from "../pages/Login";
 
 function Index() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/app" element={<App />} />
         <Route path="/" element={<Welcome />} />
+        <Route path="/login" element={<Login />} />
       </Routes>
     </BrowserRouter>
   );

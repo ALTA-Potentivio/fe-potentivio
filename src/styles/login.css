@@ -1,0 +1,21 @@
+.image {
+  width: 432px;
+  height: 533px;
+}
+
+.input-form{
+    width: 476px;
+}
+
+.input{
+    height: 50px;
+}
+
+.button {
+  background-color: #53b8d1;
+  color: white;
+  border: 2px solid white;
+  width: 476px;
+  height: 50px;
+  border-radius: 21px;
+}

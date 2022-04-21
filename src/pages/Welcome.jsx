@@ -1,12 +1,24 @@
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import logo from "../assets/potentivionew1.svg";
 import icon from "../assets/icon.svg";
+import { Link } from "react-router-dom";
 import "../styles/welcome.css";
 
 import { Navbar } from "react-bootstrap";
 import { Container } from "react-bootstrap";
 
 const Welcome = () => {
+  let navigate = useNavigate();
+
+  const loginArtist = () => {
+    navigate("/login");
+  };
+
+  const loginOwner = () => {
+    navigate("/login");
+  };
+
   return (
     <>
       <Navbar bg="light" variant="dark">
@@ -44,12 +56,20 @@ const Welcome = () => {
             <p className="ps-4">Choose who you are !</p>
             <div className="d-flex ps-4">
               <div>
-                <button type="button" class="button fw-bolder">
+                <button
+                  type="button"
+                  class="button fw-bolder"
+                  onClick={loginArtist}
+                >
                   Cafe Owner
                 </button>
               </div>
               <div className="ms-2">
-                <button type="button" class="button fw-bolder">
+                <button
+                  type="button"
+                  class="button fw-bolder"
+                  onClick={loginOwner}
+                >
                   Artist
                 </button>
               </div>
