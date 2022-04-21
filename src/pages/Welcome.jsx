@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
+import { reduxAction } from "../utils/redux/actions/action";
 import { useNavigate } from "react-router-dom";
 import logo from "../assets/potentivionew1.svg";
 import icon from "../assets/icon.svg";
-import { Link } from "react-router-dom";
 import "../styles/welcome.css";
 
 import { Navbar } from "react-bootstrap";
@@ -10,12 +11,15 @@ import { Container } from "react-bootstrap";
 
 const Welcome = () => {
   let navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const loginArtist = () => {
+    dispatch(reduxAction("status", "artist"));
     navigate("/login");
   };
 
   const loginOwner = () => {
+    dispatch(reduxAction("status", "owner"));
     navigate("/login");
   };
 
@@ -59,7 +63,7 @@ const Welcome = () => {
                 <button
                   type="button"
                   class="button fw-bolder"
-                  onClick={loginArtist}
+                  onClick={loginOwner}
                 >
                   Cafe Owner
                 </button>
@@ -68,7 +72,7 @@ const Welcome = () => {
                 <button
                   type="button"
                   class="button fw-bolder"
-                  onClick={loginOwner}
+                  onClick={loginArtist}
                 >
                   Artist
                 </button>

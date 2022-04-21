@@ -1,10 +1,13 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
 import "../styles/login.css";
 
 import logo from "../assets/logo.svg";
 
-const login = () => {
+const Login = () => {
+  const status = useSelector((state) => state.status);
+  // const status = "artist";
   return (
     <>
       <div className="row w-100">
@@ -45,22 +48,33 @@ const login = () => {
             </div>
           </form>
           <div className="mt-5">
-            <button type="button" className="button fw-bolder">
+            <button type="button" className="button-login fw-bolder">
               Log In to My Acount
             </button>
           </div>
-          <div className="ps-3 mt-3">
-            <p>
-              Don’t have any acount yet ?{" "}
-              <Link to="/">
-                <span style={{ color: "#53b8d1" }}>Register Here</span>
-              </Link>
-            </p>
-          </div>
+          {status == "artist" ? (
+            <div className="ps-3 mt-3">
+              <p>
+                Don’t have any acount yet ?{" "}
+                <Link to="/register-artist">
+                  <span style={{ color: "#53b8d1" }}>Register Here</span>
+                </Link>
+              </p>
+            </div>
+          ) : (
+            <div className="ps-3 mt-3">
+              <p>
+                Don’t have any acount yet ?{" "}
+                <Link to="/register-owner">
+                  <span style={{ color: "#53b8d1" }}>Register Here</span>
+                </Link>
+              </p>
+            </div>
+          )}
         </div>
       </div>
     </>
   );
 };
 
-export default login;
+export default Login;
