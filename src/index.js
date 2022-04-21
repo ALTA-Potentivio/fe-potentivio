@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './styles/index.css';
+import "@fontsource/roboto";
 import Route from "./routes/Router";
 
 import "bootstrap/dist/css/bootstrap.min.css";
