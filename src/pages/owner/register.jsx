@@ -18,15 +18,30 @@ const Register = () => {
           <p className="fw-lighter mb-3">Regeister as a cafe owner</p>
           <form>
             <div className="form-floating mb-3 input-form">
-              <input type="text" className="form-control" id="floatingInput" />
+              <input
+                type="text"
+                className="form-control"
+                id="floatingInput"
+                style={{ borderRadius: "21px" }}
+              />
               <label htmlFor="floatingInput">Your cafe name</label>
             </div>
             <div className="form-floating mb-3 input-form">
-              <input type="text" className="form-control" id="floatingInput" />
+              <input
+                type="text"
+                className="form-control"
+                id="floatingInput"
+                style={{ borderRadius: "21px" }}
+              />
               <label htmlFor="floatingInput">Owner cafe’s name</label>
             </div>
             <div className="form-floating mb-3 input-form">
-              <input type="email" className="form-control" id="floatingInput" />
+              <input
+                type="email"
+                className="form-control"
+                id="floatingInput"
+                style={{ borderRadius: "21px" }}
+              />
               <label htmlFor="floatingInput">Your email</label>
             </div>
             <div className="form-floating mb-3 input-form">
@@ -34,11 +49,17 @@ const Register = () => {
                 type="password"
                 className="form-control"
                 id="floatingInput"
+                style={{ borderRadius: "21px" }}
               />
               <label htmlFor="floatingInput">Your password</label>
             </div>
             <div className="form-floating mb-3 input-form">
-              <input type="text" className="form-control" id="floatingInput" />
+              <input
+                type="text"
+                className="form-control"
+                id="floatingInput"
+                style={{ borderRadius: "21px" }}
+              />
               <label htmlFor="floatingInput">Your cafe’s address</label>
             </div>
           </form>

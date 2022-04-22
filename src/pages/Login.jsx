@@ -29,7 +29,8 @@ const Login = () => {
               </label>
               <input
                 type="email"
-                className="form-control rounded-pill input"
+                className="input form-control"
+                style={{ borderRadius: "21px" }}
                 id="exampleInputEmail1"
                 aria-describedby="emailHelp"
                 placeholder="Your email"
@@ -41,7 +42,8 @@ const Login = () => {
               </label>
               <input
                 type="password"
-                className="form-control rounded-pill input"
+                className="form-control input"
+                style={{ borderRadius: "21px" }}
                 id="exampleInputPassword1"
                 placeholder="Your password"
               />

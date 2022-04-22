@@ -5,8 +5,8 @@ import { Provider } from "react-redux";
 
 import Welcome from "../pages/Welcome";
 import Login from "../pages/Login";
-import Register_Owner from "../pages/owner/register"
-import Register_Artist from "../pages/artist/register"
+import RegisterOwner from "../pages/owner/register"
+import RegisterArtist from "../pages/artist/register"
 
 function Index() {
   return (
@@ -15,8 +15,8 @@ function Index() {
         <Routes>
           <Route path="/" element={<Welcome />} />
           <Route path="/login" element={<Login />} />
-          <Route path="/register-artist" element={<Register_Artist />} />
-          <Route path="/register-owner" element={<Register_Owner />} />
+          <Route path="/register-artist" element={<RegisterArtist />} />
+          <Route path="/register-owner" element={<RegisterOwner />} />
         </Routes>
       </BrowserRouter>
     </Provider>

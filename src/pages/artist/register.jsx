@@ -18,11 +18,21 @@ const Register = () => {
           <p className="fw-lighter mb-5">Regeister as an artist</p>
           <form>
             <div className="form-floating mb-3 input-form">
-              <input type="text" className="form-control" id="floatingInput" />
-              <label htmlFor="floatingInput">Artinst name</label>
+              <input
+                type="text"
+                className="form-control"
+                id="floatingInput"
+                style={{ borderRadius: "21px" }}
+              />
+              <label htmlFor="floatingInput">Artist name</label>
             </div>
             <div className="form-floating mb-3 input-form">
-              <input type="email" className="form-control" id="floatingInput" />
+              <input
+                type="email"
+                className="form-control"
+                id="floatingInput"
+                style={{ borderRadius: "21px" }}
+              />
               <label htmlFor="floatingInput">Your email</label>
             </div>
             <div className="form-floating mb-3 input-form">
@@ -30,11 +40,17 @@ const Register = () => {
                 type="password"
                 className="form-control"
                 id="floatingInput"
+                style={{ borderRadius: "21px" }}
               />
               <label htmlFor="floatingInput">Your password</label>
             </div>
             <div className="form-floating mb-3 input-form">
-              <input type="text" className="form-control" id="floatingInput" />
+              <input
+                type="text"
+                className="form-control"
+                id="floatingInput"
+                style={{ borderRadius: "21px" }}
+              />
               <label htmlFor="floatingInput">Your address</label>
             </div>
           </form>
