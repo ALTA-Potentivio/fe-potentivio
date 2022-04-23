@@ -12,6 +12,7 @@ import HomeOwner from "../pages/owner/Home";
 import DetailOwner from "../pages/owner/Detail";
 
 import HomeArtist from "../pages/artist/Home";
+import DetailArtist from "../pages/artist/Detail";
 
 function Index() {
   return (
@@ -25,6 +26,7 @@ function Index() {
           <Route path="/home-owner" element={<HomeOwner />} />
           <Route path="/detail-owner" element={<DetailOwner />} />
           <Route path="/home-artist" element={<HomeArtist />} />
+          <Route path="/detail-artist" element={<DetailArtist />} />
         </Routes>
       </BrowserRouter>
     </Provider>
