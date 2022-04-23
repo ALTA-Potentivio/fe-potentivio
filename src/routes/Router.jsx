@@ -11,6 +11,7 @@ import RegisterArtist from "../pages/artist/Register";
 import HomeOwner from "../pages/owner/Home";
 import DetailOwner from "../pages/owner/Detail";
 import HireStatus from "../pages/owner/HireStatus";
+import Notification from "../pages/owner/Notification";
 
 import HomeArtist from "../pages/artist/Home";
 import DetailArtist from "../pages/artist/Detail";
@@ -28,6 +29,7 @@ function Index() {
           <Route path="/home-owner" element={<HomeOwner />} />
           <Route path="/detail-owner" element={<DetailOwner />} />
           <Route path="/hire-owner" element={<HireStatus />} />
+          <Route path="/notification" element={<Notification />} />
           <Route path="/home-artist" element={<HomeArtist />} />
           <Route path="/detail-artist" element={<DetailArtist />} />
           <Route path="/inbox-artist" element={<InboxArtist />} />
