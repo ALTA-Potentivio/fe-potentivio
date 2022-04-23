@@ -3,8 +3,9 @@ import { useEffect, useState } from "react";
 import image from "../../assets/image-6.png";
 import album from "../../assets/image-5.png";
 import peta from "../../assets/image-7.png";
+import addImage from "../../assets/Group-10.png";
 
-const Detail = () => {
+const Profile = () => {
   return (
     <>
       <div className="container mt-3">
@@ -13,7 +14,6 @@ const Detail = () => {
             <img src={`${image}`} className="img-fluid rounded" alt="..." />
           </div>
           <div className="col-6">
-            <button className="float-end button-hire">Apply</button>
             <h2>Baignet Cafe</h2>
             <p>by Tono Subagyo</p>
             <p>Jl. Thamrin, Jakarta Pusat</p>
@@ -21,11 +21,7 @@ const Detail = () => {
             <p>OPEN 9.30 - 21.00</p>
           </div>
           <div className="col">
-            <img
-              src={`${peta}`}
-              className="img-fluid rounded me-4"
-              alt="..."
-            />
+            <img src={`${peta}`} className="img-fluid rounded me-4" alt="..." />
           </div>
         </div>
         <div className="border-top border-bottom">
@@ -43,6 +39,11 @@ const Detail = () => {
               className="img-fluid rounded me-4"
               alt="..."
             />
+            <img
+              src={`${addImage}`}
+              className="img-fluid rounded me-4"
+              alt="..."
+            />
           </div>
         </div>
       </div>
@@ -50,4 +51,4 @@ const Detail = () => {
   );
 };
 
-export default Detail;
+export default Profile;
