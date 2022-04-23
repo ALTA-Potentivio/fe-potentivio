@@ -13,6 +13,7 @@ import DetailOwner from "../pages/owner/Detail";
 import HireStatus from "../pages/owner/HireStatus";
 import Notification from "../pages/owner/Notification";
 import ProfileOwner from "../pages/owner/Profile";
+import Rating from "../pages/owner/Rating";
 
 import HomeArtist from "../pages/artist/Home";
 import DetailArtist from "../pages/artist/Detail";
@@ -33,6 +34,7 @@ function Index() {
           <Route path="/hire-owner" element={<HireStatus />} />
           <Route path="/notification" element={<Notification />} />
           <Route path="/profile-owner" element={<ProfileOwner />} />
+          <Route path="/rating" element={<Rating />} />
           <Route path="/home-artist" element={<HomeArtist />} />
           <Route path="/detail-artist" element={<DetailArtist />} />
           <Route path="/inbox-artist" element={<InboxArtist />} />
