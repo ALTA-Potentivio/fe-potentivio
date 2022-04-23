@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import React from "react";
 import { useDispatch } from "react-redux";
 import { reduxAction } from "../utils/redux/actions/action";
 import { useNavigate } from "react-router-dom";

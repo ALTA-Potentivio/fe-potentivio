@@ -14,6 +14,7 @@ import HireStatus from "../pages/owner/HireStatus";
 
 import HomeArtist from "../pages/artist/Home";
 import DetailArtist from "../pages/artist/Detail";
+import InboxArtist from "../pages/artist/Inbox";
 
 function Index() {
   return (
@@ -29,6 +30,7 @@ function Index() {
           <Route path="/hire-owner" element={<HireStatus />} />
           <Route path="/home-artist" element={<HomeArtist />} />
           <Route path="/detail-artist" element={<DetailArtist />} />
+          <Route path="/inbox-artist" element={<InboxArtist />} />
         </Routes>
       </BrowserRouter>
     </Provider>
