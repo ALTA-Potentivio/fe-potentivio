@@ -5,8 +5,8 @@ import { Provider } from "react-redux";
 
 import Welcome from "../pages/Welcome";
 import Login from "../pages/Login";
-import RegisterOwner from "../pages/owner/register";
-import RegisterArtist from "../pages/artist/register";
+import RegisterArtist from "../pages/artist/Register"
+import RegisterOwner from "../pages/owner/Register";
 
 import HomeOwner from "../pages/owner/Home";
 import DetailOwner from "../pages/owner/Detail";
@@ -31,12 +31,14 @@ function Index() {
           <Route path="/login" element={<Login />} />
           <Route path="/register-artist" element={<RegisterArtist />} />
           <Route path="/register-owner" element={<RegisterOwner />} />
-          <Route path="/home-owner" element={<HomeOwner />} />
-          <Route path="/detail-owner" element={<DetailOwner />} />
-          <Route path="/hire-owner" element={<HireStatus />} />
-          <Route path="/notification" element={<Notification />} />
-          <Route path="/profile-owner" element={<ProfileOwner />} />
-          <Route path="/rating" element={<Rating />} />
+          <Route path="/owner" element={<LayoutOwner />}>
+            <Route index element={<HomeOwner />} />
+            <Route path="detail-owner" element={<DetailOwner />} />
+            <Route path="hire-owner" element={<HireStatus />} />
+            <Route path="notification" element={<Notification />} />
+            <Route path="profile-owner" element={<ProfileOwner />} />
+            <Route path="rating" element={<Rating />} />
+          </Route>
           <Route path="/home-artist" element={<HomeArtist />} />
           <Route path="/detail-artist" element={<DetailArtist />} />
           <Route path="/inbox-artist" element={<InboxArtist />} />

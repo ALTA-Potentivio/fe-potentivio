@@ -1,5 +1,6 @@
 const initialState = {
-  status: ""
+  status: "",
+  base_url: "https://potentivio.my.id",
 };
 
 export const reducer = (state = initialState, action) => {

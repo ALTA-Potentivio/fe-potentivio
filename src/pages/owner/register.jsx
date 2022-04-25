@@ -1,10 +1,56 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
+import axios from "axios";
 import "../../styles/login.css";
 
 import logo from "../../assets/logo.svg";
 
 const Register = () => {
+  const base_url = useSelector((state) => state.base_url);
+  const [ownerName, setOwnerName] = useState("");
+  const [cafeName, setCafeName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [address, setAddress] = useState("");
+
+  const updateCafeName = (event) => {
+    setCafeName(event.target.value);
+  };
+
+  const updateOwnerName = (event) => {
+    setOwnerName(event.target.value);
+  };
+
+  const updateEmail = (event) => {
+    setEmail(event.target.value);
+  };
+
+  const updatePassword = (event) => {
+    setPassword(event.target.value);
+  };
+
+  const updateAddress = (event) => {
+    setAddress(event.target.value);
+  };
+
+  const submit = () => {
+    axios
+      .post(`${base_url}/cafe`, {
+        cafe_name: cafeName,
+        owner: ownerName,
+        email: email,
+        password: password,
+        address: address,
+      })
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
   return (
     <>
       <div className="row w-100">
@@ -21,50 +67,64 @@ const Register = () => {
               <input
                 type="text"
                 className="form-control"
-                id="floatingInput"
+                id="cafeName"
                 style={{ borderRadius: "21px" }}
+                value={cafeName}
+                onChange={updateCafeName}
               />
-              <label htmlFor="floatingInput">Your cafe name</label>
+              <label htmlFor="cafeName">Your cafe name</label>
             </div>
             <div className="form-floating mb-3 input-form">
               <input
                 type="text"
                 className="form-control"
-                id="floatingInput"
+                id="ownerName"
                 style={{ borderRadius: "21px" }}
+                value={ownerName}
+                onChange={updateOwnerName}
               />
-              <label htmlFor="floatingInput">Owner cafe’s name</label>
+              <label htmlFor="ownerName">Owner cafe’s name</label>
             </div>
             <div className="form-floating mb-3 input-form">
               <input
                 type="email"
                 className="form-control"
-                id="floatingInput"
+                id="email"
                 style={{ borderRadius: "21px" }}
+                value={email}
+                onChange={updateEmail}
               />
-              <label htmlFor="floatingInput">Your email</label>
+              <label htmlFor="email">Your email</label>
             </div>
             <div className="form-floating mb-3 input-form">
               <input
                 type="password"
                 className="form-control"
-                id="floatingInput"
+                id="password"
                 style={{ borderRadius: "21px" }}
+                value={password}
+                onChange={updatePassword}
               />
-              <label htmlFor="floatingInput">Your password</label>
+              <label htmlFor="password">Your password</label>
             </div>
             <div className="form-floating mb-3 input-form">
               <input
                 type="text"
                 className="form-control"
-                id="floatingInput"
+                id="address"
                 style={{ borderRadius: "21px" }}
+                value={address}
+                onChange={updateAddress}
               />
-              <label htmlFor="floatingInput">Your cafe’s address</label>
+              <label htmlFor="address">Your cafe’s address</label>
             </div>
           </form>
           <div className="mt-5">
-            <button type="button" className="button-login fw-bolder">
+            <button
+              type="button"
+              className="button-login fw-bolder"
+              onClick={()=> submit()}
+            >
               Register
             </button>
           </div>

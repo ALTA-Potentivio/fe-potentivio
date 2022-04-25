@@ -71,7 +71,7 @@ const Welcome = () => {
               <div className="ms-2">
                 <button
                   type="button"
-                  class="button fw-bolder"
+                  className="button fw-bolder"
                   onClick={loginArtist}
                 >
                   Artist
