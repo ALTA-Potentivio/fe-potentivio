@@ -1,6 +1,9 @@
 import { useEffect, useState } from "react";
 
 import "../styles/headerowner.css";
+import logo from "../assets/headerlogo.png";
+import notif from "../assets/notifs.png";
+import profile from "../assets/profile.png";
 
 const HeaderOwner = () => {
     return (
@@ -8,8 +11,8 @@ const HeaderOwner = () => {
             <div className="header-3-2 container-xxl mx-auto p-0 position-relative">
                 <nav className="navbar navbar-expand-lg navbar-light">
                     <a href="#">
-                        <img style={{marginRight: '0.75rem'}}
-                            src=""
+                        <img style={{ width: "120px"}}
+                            src={`${logo}`}
                             alt="" />
                     </a>
                     <button className="navbar-toggler border-0" type="button" data-bs-toggle="modal" 
@@ -118,6 +121,16 @@ const HeaderOwner = () => {
                                 </form>
                             </li>
                         </ul>
+                        <a href="#">
+                            <img style={{marginRight: '0.75rem', width: "25px"}}
+                                src={`${notif}`}
+                                alt="" />
+                        </a>
+                        <a href="#">
+                            <img style={{ width: "30px"}}
+                                src={`${profile}`}
+                                alt="" />
+                        </a>
                     </div>
                 </nav>
                 <div className="hr">
