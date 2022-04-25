@@ -1,10 +1,13 @@
 import { useEffect, useState } from "react";
 
 import CardHome from "../../components/home-owner/CardHome"
+import Header from "../../components/HeaderOwner"
+
 
 const Home = () => {
   return (
     <>
+      <Header />
       <div className="border border-start-0 border-end-0 mt-3">
         <div className="p-3 d-flex justify-content-center">
           <select

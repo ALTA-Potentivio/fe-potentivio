@@ -5,8 +5,8 @@ import { Provider } from "react-redux";
 
 import Welcome from "../pages/Welcome";
 import Login from "../pages/Login";
-import RegisterOwner from "../pages/owner/Register";
-import RegisterArtist from "../pages/artist/Register";
+import RegisterOwner from "../pages/owner/register";
+import RegisterArtist from "../pages/artist/register";
 
 import HomeOwner from "../pages/owner/Home";
 import DetailOwner from "../pages/owner/Detail";
@@ -19,6 +19,8 @@ import HomeArtist from "../pages/artist/Home";
 import DetailArtist from "../pages/artist/Detail";
 import InboxArtist from "../pages/artist/Inbox";
 import ProfileArtist from "../pages/artist/Profile";
+
+import LayoutOwner from "../components/LayoutOwner";
 
 function Index() {
   return (
