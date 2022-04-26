@@ -8,6 +8,7 @@ import Login from "../pages/Login";
 import RegisterArtist from "../pages/artist/Register"
 import RegisterOwner from "../pages/owner/Register";
 
+import CompleteOwner from "../pages/owner/CompleteOwner";
 import HomeOwner from "../pages/owner/Home";
 import DetailOwner from "../pages/owner/Detail";
 import HireStatus from "../pages/owner/HireStatus";
@@ -31,6 +32,7 @@ function Index() {
           <Route path="/login" element={<Login />} />
           <Route path="/register-artist" element={<RegisterArtist />} />
           <Route path="/register-owner" element={<RegisterOwner />} />
+          <Route path="/complete-owner" element={<CompleteOwner />} />
           <Route path="/owner" element={<LayoutOwner />}>
             <Route index element={<HomeOwner />} />
             <Route path="detail-owner" element={<DetailOwner />} />

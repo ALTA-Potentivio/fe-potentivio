@@ -45,3 +45,21 @@
   height: 50px;
   border-radius: 21px;
 }
+
+.button-map{
+  background-color: #53b8d1;
+  color: white;
+  border: 2px solid white;
+  width: 110px;
+  height: 50px;
+  border-radius: 21px;
+}
+
+.botton-complete{
+  background-color: #53b8d1;
+  color: white;
+  border: 2px solid white;
+  width: 350px;
+  height: 50px;
+  border-radius: 21px;
+}
