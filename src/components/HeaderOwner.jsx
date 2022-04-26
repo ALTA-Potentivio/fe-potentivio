@@ -56,7 +56,7 @@ const HeaderOwner = () => {
                                                                     fill="#303030"/>
                                                         </svg>
                                                 </a>
-                                                <form method className="collapse position-absolute form center-search border-0"
+                                                <form className="collapse position-absolute form center-search border-0"
                                                     id="collapse">
                                                         <div className="d-flex">
                                                             <input type="text" className="rounded-full border-0 focus:outline-none"
@@ -114,6 +114,9 @@ const HeaderOwner = () => {
                                                 href="#collapse" role="button" aria-expanded="false"
                                                 aria-controls="collapse" fill="none" stroke="#273B56" viewBox="0 0 24 24"
                                                 xmlns="http://www.w3.org/2000/svg">
+                                                <path strokeLinecap="round" strokeLinejoin="round"
+                                                strokeWidth="2" d="M6 18L18 6M6 6l12 12">
+                                                </path>
                                             </svg>
 
                                         </button>
