@@ -1,6 +1,9 @@
 import { useEffect, useState } from "react";
 
 import "../styles/headerowner.css";
+import logo from "../assets/headerlogo.png";
+import notif from "../assets/notifs.png";
+import profile from "../assets/profile.png";
 
 const HeaderOwner = () => {
     return (
@@ -8,8 +11,8 @@ const HeaderOwner = () => {
             <div className="header-3-2 container-xxl mx-auto p-0 position-relative">
                 <nav className="navbar navbar-expand-lg navbar-light">
                     <a href="#">
-                        <img style={{marginRight: '0.75rem'}}
-                            src=""
+                        <img style={{ width: "120px"}}
+                            src={`${logo}`}
                             alt="" />
                     </a>
                     <button className="navbar-toggler border-0" type="button" data-bs-toggle="modal" 
@@ -53,7 +56,7 @@ const HeaderOwner = () => {
                                                                     fill="#303030"/>
                                                         </svg>
                                                 </a>
-                                                <form method className="collapse position-absolute form center-search border-0"
+                                                <form className="collapse position-absolute form center-search border-0"
                                                     id="collapse">
                                                         <div className="d-flex">
                                                             <input type="text" className="rounded-full border-0 focus:outline-none"
@@ -111,6 +114,9 @@ const HeaderOwner = () => {
                                                 href="#collapse" role="button" aria-expanded="false"
                                                 aria-controls="collapse" fill="none" stroke="#273B56" viewBox="0 0 24 24"
                                                 xmlns="http://www.w3.org/2000/svg">
+                                                <path strokeLinecap="round" strokeLinejoin="round"
+                                                strokeWidth="2" d="M6 18L18 6M6 6l12 12">
+                                                </path>
                                             </svg>
 
                                         </button>
@@ -118,6 +124,16 @@ const HeaderOwner = () => {
                                 </form>
                             </li>
                         </ul>
+                        <a href="#">
+                            <img style={{marginRight: '0.75rem', width: "25px"}}
+                                src={`${notif}`}
+                                alt="" />
+                        </a>
+                        <a href="#">
+                            <img style={{ width: "30px"}}
+                                src={`${profile}`}
+                                alt="" />
+                        </a>
                     </div>
                 </nav>
                 <div className="hr">
