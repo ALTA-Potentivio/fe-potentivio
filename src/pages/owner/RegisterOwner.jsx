@@ -7,7 +7,7 @@ import "../../styles/login.css";
 
 import logo from "../../assets/logo.svg";
 
-const Register = () => {
+const RegisterOwner = () => {
   const base_url = useSelector((state) => state.base_url);
   let navigate = useNavigate();
   const [ownerName, setOwnerName] = useState("");
@@ -46,7 +46,7 @@ const Register = () => {
         address: address,
       })
       .then((res) => {
-        const data = res.data
+        const data = res.data;
         Swal.fire({
           title: "Sukses",
           text: `${data.message}`,
@@ -137,7 +137,7 @@ const Register = () => {
             <button
               type="button"
               className="button-login fw-bolder"
-              onClick={()=> submit()}
+              onClick={() => submit()}
             >
               Register
             </button>
@@ -148,4 +148,4 @@ const Register = () => {
   );
 };
 
-export default Register;
+export default RegisterOwner;

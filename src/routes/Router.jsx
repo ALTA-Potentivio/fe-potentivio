@@ -6,7 +6,7 @@ import { Provider } from "react-redux";
 import Welcome from "../pages/Welcome";
 import Login from "../pages/Login";
 import RegisterArtist from "../pages/artist/Register"
-import RegisterOwner from "../pages/owner/register";
+import RegisterOwner from "../pages/owner/RegisterOwner";
 
 import CompleteOwner from "../pages/owner/CompleteOwner";
 import HomeOwner from "../pages/owner/Home";
