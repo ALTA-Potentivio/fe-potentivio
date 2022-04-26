@@ -1,12 +1,15 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import Swal from "sweetalert2";
 import "../styles/login.css";
 
 import logo from "../assets/logo.svg";
 
 const Login = () => {
+  let navigate = useNavigate();
   const status = useSelector((state) => state.status);
   const base_url = useSelector((state) => state.base_url);
   const [email, setEmail] = useState("");
@@ -22,14 +25,24 @@ const Login = () => {
           password: password,
         })
         .then((res) => {
-          const data = res.data
+          const data = res.data;
           localStorage.setItem("token", data.data.token);
+          localStorage.setItem("id", data.data.id_cafe);
+          if (data.data.status_profile === "not complete") {
+            navigate("/complete-owner");
+          } else {
+            navigate("/owner");
+          }
           console.log(data);
         })
         .catch((err) => {
-          console.log(err);
+          Swal.fire({
+            title: "Gagal",
+            text: `Incomplete data`,
+            icon: "error",
+            confirmButtonText: "Gagal",
+          });
         });
-      console.log("owner");
     }
   };
 
