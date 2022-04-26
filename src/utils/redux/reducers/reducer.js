@@ -1,6 +1,7 @@
 const initialState = {
   status: "",
   base_url: "https://potentivio.my.id",
+  dataArtist: []
 };
 
 export const reducer = (state = initialState, action) => {
@@ -9,6 +10,11 @@ export const reducer = (state = initialState, action) => {
       return {
         ...state,
         status: action.payload,
+      };
+    case "setArtist":
+      return {
+        ...state,
+        dataArtist: action.payload
       };
     default:
       return state;

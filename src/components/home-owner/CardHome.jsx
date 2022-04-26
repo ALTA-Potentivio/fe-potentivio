@@ -2,7 +2,8 @@ import { useEffect, useState } from "react";
 
 import image from "../../assets/image-3.png";
 
-const CardHome = () => {
+const CardHome = ({ item }) => {
+  // console.log(item);
     return (
       <>
         <div className="mt-3 d-flex justify-content-center">
@@ -28,7 +29,9 @@ const CardHome = () => {
                     <h5 className="card-title float-end price text-center pt-2">
                       Rp 300.000
                     </h5>
-                    <h5 className="card-title">Sunday Band</h5>
+                    <h5 className="card-title text-capitalize">
+                      {item.artist_name}
+                    </h5>
                   </div>
                   <p className="card-text">Band - Acoustic</p>
                   <p className="card-text">
