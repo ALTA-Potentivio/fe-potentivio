@@ -62,7 +62,7 @@ const Welcome = () => {
               <div>
                 <button
                   type="button"
-                  class="button fw-bolder"
+                  className="button fw-bolder"
                   onClick={loginOwner}
                 >
                   Cafe Owner

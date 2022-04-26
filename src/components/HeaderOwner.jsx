@@ -19,7 +19,7 @@ const HeaderOwner = () => {
 
                     <div className="modal-item modal fade" id="targetModal-item" tabIndex="-1" role="dialog"
                         aria-labelledby="targetModalLabel" aria-hidden="true">
-                            <div class="modal-dialog" role="document">
+                            <div className="modal-dialog" role="document">
                                 <div className="modal-content bg-white border-0">
                                     <div className="modal-header border-0" style={{padding: '2rem', paddingBottom: '0'}}>
                                         <a className="modal-title" id="targetModalLabel">

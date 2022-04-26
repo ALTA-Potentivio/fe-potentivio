@@ -1,13 +1,38 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
+import axios from "axios";
 import "../styles/login.css";
 
 import logo from "../assets/logo.svg";
 
 const Login = () => {
   const status = useSelector((state) => state.status);
-  // const status = "artist";
+  const base_url = useSelector((state) => state.base_url);
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  const submit = () => {
+    if (status === "artist") {
+      console.log("artis");
+    } else {
+      axios
+        .post(`${base_url}/login/cafe-owner`, {
+          email: email,
+          password: password,
+        })
+        .then((res) => {
+          const data = res.data
+          localStorage.setItem("token", data.data.token);
+          console.log(data);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+      console.log("owner");
+    }
+  };
+
   return (
     <>
       <div className="row w-100">
@@ -34,6 +59,7 @@ const Login = () => {
                 id="exampleInputEmail1"
                 aria-describedby="emailHelp"
                 placeholder="Your email"
+                onChange={(e) => setEmail(e.target.value)}
               />
             </div>
             <div className="mb-3 input-form">
@@ -46,15 +72,20 @@ const Login = () => {
                 style={{ borderRadius: "21px" }}
                 id="exampleInputPassword1"
                 placeholder="Your password"
+                onChange={(e) => setPassword(e.target.value)}
               />
             </div>
           </form>
           <div className="mt-5">
-            <button type="button" className="button-login fw-bolder">
+            <button
+              type="button"
+              className="button-login fw-bolder"
+              onClick={() => submit()}
+            >
               Log In to My Acount
             </button>
           </div>
-          {status == "artist" ? (
+          {status === "artist" ? (
             <div className="ps-3 mt-3">
               <p>
                 Don’t have any acount yet ?{" "}

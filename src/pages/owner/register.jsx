@@ -1,6 +1,7 @@
-import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { useState } from "react";
 import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
 import axios from "axios";
 import "../../styles/login.css";
 
@@ -8,6 +9,7 @@ import logo from "../../assets/logo.svg";
 
 const Register = () => {
   const base_url = useSelector((state) => state.base_url);
+  let navigate = useNavigate();
   const [ownerName, setOwnerName] = useState("");
   const [cafeName, setCafeName] = useState("");
   const [email, setEmail] = useState("");
@@ -44,10 +46,22 @@ const Register = () => {
         address: address,
       })
       .then((res) => {
-        console.log(res);
+        const data = res.data
+        Swal.fire({
+          title: "Sukses",
+          text: `${data.message}`,
+          icon: "success",
+          confirmButtonText: "Berhasil",
+        });
+        navigate("/");
       })
       .catch((err) => {
-        console.log(err);
+        Swal.fire({
+          title: "Gagal",
+          text: `Incomplete data`,
+          icon: "error",
+          confirmButtonText: "Gagal",
+        });
       });
   };
 
