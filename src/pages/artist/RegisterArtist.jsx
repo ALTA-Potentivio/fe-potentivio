@@ -4,7 +4,7 @@ import "../../styles/login.css";
 
 import logo from "../../assets/logo.svg";
 
-const Register = () => {
+const RegisterArtist = () => {
   return (
     <>
       <div className="row w-100">
@@ -65,4 +65,4 @@ const Register = () => {
   );
 };
 
-export default Register;
+export default RegisterArtist;
