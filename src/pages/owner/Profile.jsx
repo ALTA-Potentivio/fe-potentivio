@@ -78,7 +78,13 @@ const Profile = () => {
   };
 
   if (profileOwner.length === 0) {
-    return <></>;
+    return (
+      <div className="text-center">
+        <div class="spinner-border" role="status">
+          <span class="visually-hidden">Loading...</span>
+        </div>
+      </div>
+    );
   } else {
     return (
       <>
