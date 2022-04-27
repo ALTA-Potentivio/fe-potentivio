@@ -15,7 +15,7 @@ const Home = () => {
   const [valueCtgy, setValueCtgy] = useState("all");
   const [genre, setGenre] = useState([]);
   const [valueGenre, setValueGenre] = useState("all");
-  const [price, setPrice] = useState([
+  const [price] = useState([
     {
       value: "asc",
       name: "Ascending",

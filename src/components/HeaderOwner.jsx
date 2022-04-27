@@ -88,7 +88,7 @@ const HeaderOwner = () => {
                       <a
                         className="nav-link main"
                         style={{ color: "#243142" }}
-                        href="#"
+                        href="/owner"
                       >
                         Home
                       </a>
