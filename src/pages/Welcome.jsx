@@ -24,7 +24,7 @@ const Welcome = () => {
   };
 
   return (
-    <>
+    <div className="h-100">
       <Navbar bg="light" variant="dark">
         <Container>
           <Navbar.Brand
@@ -44,47 +44,49 @@ const Welcome = () => {
         </Container>
       </Navbar>
       <br />
-      <div className="mt-4 row w-100">
-        <div className="col">
-          <div className="ms-5 ps-5 pt-5 mt-3">
-            <h1 className="fw-bolder ps-4" style={{ color: "#3B4148" }}>
-              The New Way <br />
-              <span style={{ color: "#53B8D1" }}>Find An Artist </span>To
-              Perfome <br />
-              At Your Establishment
-            </h1>
-            <p className="ps-4">
-              Hard to find a good artist according to your wishes?
-              <br /> Don’t worry because we are here to help you
-            </p>
-            <p className="ps-4">Choose who you are !</p>
-            <div className="d-flex ps-4">
-              <div>
-                <button
-                  type="button"
-                  className="button fw-bolder"
-                  onClick={loginOwner}
-                >
-                  Cafe Owner
-                </button>
-              </div>
-              <div className="ms-2">
-                <button
-                  type="button"
-                  className="button fw-bolder"
-                  onClick={loginArtist}
-                >
-                  Artist
-                </button>
+      <div className="container py-4">
+        <div className="row w-100 gy-5">
+          <div className="col">
+            <div className="pt-5 mt-3">
+              <h1 className="fw-bolder" style={{ color: "#3B4148" }}>
+                The New Way <br />
+                <span style={{ color: "#53B8D1" }}>Find An Artist </span>To
+                Perfome <br />
+                At Your Establishment
+              </h1>
+              <p className="">
+                Hard to find a good artist according to your wishes?
+                <br /> Don’t worry because we are here to help you
+              </p>
+              <p className="">Choose who you are !</p>
+              <div className="d-flex">
+                <div>
+                  <button
+                    type="button"
+                    className="button fw-bolder"
+                    onClick={loginOwner}
+                  >
+                    Cafe Owner
+                  </button>
+                </div>
+                <div className="ms-2">
+                  <button
+                    type="button"
+                    className="button fw-bolder"
+                    onClick={loginArtist}
+                  >
+                    Artist
+                  </button>
+                </div>
               </div>
             </div>
           </div>
-        </div>
-        <div className="col">
-          <img alt="" src={`${icon}`} />
+          <div className="col">
+            <img alt="" src={`${icon}`} />
+          </div>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 

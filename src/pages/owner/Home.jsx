@@ -91,7 +91,8 @@ const Home = () => {
           dispatch(reduxAction("setArtist", res.data.data));
         })
         .catch((err) => {
-          console.log(err);
+          let data = [];
+          dispatch(reduxAction("setArtist", data));
         });
     } else if (valueCtgy === "all") {
       axios
@@ -107,7 +108,8 @@ const Home = () => {
           dispatch(reduxAction("setArtist", res.data.data));
         })
         .catch((err) => {
-          console.log(err);
+          let data = []
+          dispatch(reduxAction("setArtist", data));
         });
     } else if (valueGenre === "all") {
       axios
@@ -123,7 +125,8 @@ const Home = () => {
           dispatch(reduxAction("setArtist", res.data.data));
         })
         .catch((err) => {
-          console.log(err);
+          let data = [];
+          dispatch(reduxAction("setArtist", data));
         });
     } else {
       axios
@@ -139,7 +142,8 @@ const Home = () => {
           dispatch(reduxAction("setArtist", res.data.data));
         })
         .catch((err) => {
-          console.log(err);
+          let data = [];
+          dispatch(reduxAction("setArtist", data));
         });
     }
   }
@@ -218,19 +222,31 @@ const Home = () => {
             />
           </div>
           <div>
-            <button type="button" className="fw-bolder button-find mt-2" onClick={() => find()}>
+            <button
+              type="button"
+              className="fw-bolder button-find mt-2"
+              onClick={() => find()}
+            >
               Find
             </button>
           </div>
         </div>
       </div>
-      {dataArtist.map((item) => {
-        return (
-          <div key={item.id}>
-            <CardHome item={item} />
-          </div>
-        );
-      })}
+      {dataArtist.length === 0 ? (
+        <div className="text-center">
+          <h1>data not found</h1>
+        </div>
+      ) : (
+        <div>
+          {dataArtist.map((item) => {
+            return (
+              <div key={item.id}>
+                <CardHome item={item} />
+              </div>
+            );
+          })}
+        </div>
+      )}
     </>
   );
 };
