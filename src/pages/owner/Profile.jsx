@@ -80,8 +80,8 @@ const Profile = () => {
   if (profileOwner.length === 0) {
     return (
       <div className="text-center">
-        <div class="spinner-border" role="status">
-          <span class="visually-hidden">Loading...</span>
+        <div className="spinner-border" role="status">
+          <span className="visually-hidden">Loading...</span>
         </div>
       </div>
     );

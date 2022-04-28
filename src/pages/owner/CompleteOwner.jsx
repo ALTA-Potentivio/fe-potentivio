@@ -81,7 +81,7 @@ const CompleteOwner = () => {
                   onChange={(e) => setOpeningHours(e.target.value)}
                   required
                 />
-                <label htmlFor="openHours">Open Hours</label>
+                <label htmlFor="openHours">Open Hours (08.00 - 23.00)</label>
               </div>
             </div>
           </div>
@@ -151,16 +151,16 @@ const CompleteOwner = () => {
             />
             <label htmlFor="floatingInput">Description</label>
           </div>
+          <div className="col-12 pe-5">
+            <button
+              className="botton-complete float-end"
+              type="submit"
+              onClick={() => submit()}
+            >
+              Let’s Get It
+            </button>
+          </div>
         </form>
-        <div className="col-12 pe-5">
-          <button
-            className="botton-complete float-end"
-            type="submit"
-            onClick={() => submit()}
-          >
-            Let’s Get It
-          </button>
-        </div>
       </div>
       <div
         className="modal fade"

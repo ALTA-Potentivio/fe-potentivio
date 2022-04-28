@@ -35,7 +35,7 @@ function Index() {
           <Route path="/complete-owner" element={<CompleteOwner />} />
           <Route path="/owner" element={<LayoutOwner />}>
             <Route index element={<HomeOwner />} />
-            <Route path="detail-owner" element={<DetailOwner />} />
+            <Route path="detail-owner/:id" element={<DetailOwner />} />
             <Route path="hire-owner" element={<HireStatus />} />
             <Route path="notification" element={<Notification />} />
             <Route path="profile-owner" element={<ProfileOwner />} />

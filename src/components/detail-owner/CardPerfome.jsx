@@ -8,8 +8,8 @@ const CardPerforme = () => {
       <div className="d-flex w-100" style={{ height: "80px" }}>
         <img src={`${image}`} className="img-fluid rounded-circle" alt="..." />
         <div className="ms-3 mt-3">
+          <h5>Bougnet Cafe</h5>
           <p>
-            <h5>Bougnet Cafe</h5>
             <small>Monday, 27 April 2022</small>
           </p>
         </div>
