@@ -1,13 +1,14 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { useSelector } from "react-redux";
+import Calendar from "react-calendar";
+import { Rating } from "react-simple-star-rating";
 
 import CardAvailable from "../../components/detail-owner/CardAvailable";
 import CardPerforme from "../../components/detail-owner/CardPerfome";
 import Video from "../../components/detail-owner/Video";
 
 import axios from "axios";
-import { getDefaultNormalizer } from "@testing-library/react";
 
 const Detail = () => {
   const base_url = useSelector((state) => state.base_url);
@@ -15,6 +16,7 @@ const Detail = () => {
   const params = useParams();
   const [detail, setDetail] = useState([]);
   const [price, setPrice] = useState(0);
+  const [valueCalendar, setValueCalendar] = useState(new Date());
 
   useEffect(() => {
     getDetail();
@@ -31,7 +33,6 @@ const Detail = () => {
       .then((res) => {
         setDetail(res.data.data);
         formatPrice(res.data.data.price);
-        console.log(res);
       })
       .catch((err) => {
         console.log(err);
@@ -51,6 +52,28 @@ const Detail = () => {
     }
 
     setPrice(rupiah);
+  };
+
+  const hire = () => {
+    const { id } = params;
+    axios
+      .post(
+        `${base_url}/hire/${id}`,
+        {
+          date: valueCalendar.toISOString(),
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      )
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
 
   if (detail.length === 0) {
@@ -75,12 +98,26 @@ const Detail = () => {
             </div>
             <div className="col pt-4">
               <h2 className="text-capitalize">{detail.artist_name}</h2>
-              <p className="text-capitalize">{detail.address}</p>
+              <p className="text-capitalize pt-2">{detail.address}</p>
+              <div className="d-flex mb-2">
+                <p className="pt-2 pe-2">Rating :</p>
+                <div>
+                  <Rating fillColor={`#53b8d1`} initialValue={detail.rating} readonly/>
+                  <p>{detail.total_rate} Orang Yang Sudah Menilai</p>
+                </div>
+                <p className="pt-2 ps-2">{detail.rating}/5</p>
+              </div>
               <div className="d-flex">
                 <h5 className="card-title price text-center pt-2">
                   Rp {price}
                 </h5>
-                <button className="button-hire">Hire</button>
+                <button
+                  className="button-hire"
+                  data-bs-toggle="modal"
+                  data-bs-target="#exampleModal"
+                >
+                  Hire
+                </button>
               </div>
             </div>
           </div>
@@ -89,18 +126,65 @@ const Detail = () => {
             <p className="text-capitalize">{detail.description}</p>
             <div className="mb-5 d-flex justify-content-around">
               <Video />
-              <Video />
             </div>
           </div>
           <div className="mt-3 border-bottom">
             <h3>Not available in :</h3>
-            <div className="container-fluid d-flex flex-grow-1 flex-wrap justify-content-around pt-3 mt-3 mb-5">
-              <CardAvailable />
-            </div>
+            {detail.not_available.length === 0 ? (
+              <div className="container-fluid d-flex flex-grow-1 flex-wrap justify-content-around pt-3 mt-3 mb-5">
+                <h1>No schedule yet</h1>
+              </div>
+            ) : (
+              <div className="container-fluid d-flex flex-grow-1 flex-wrap justify-content-around pt-3 mt-3 mb-5">
+                <CardAvailable />
+              </div>
+            )}
           </div>
           <div className="mt-3 mb-5">
             <h3>Perfome history</h3>
-            <CardPerforme />
+            {detail.hire_history.length === 0 ? (
+              <div className="container-fluid d-flex flex-grow-1 flex-wrap justify-content-around pt-3 mt-3 mb-5">
+                <h1>No history yet</h1>
+              </div>
+            ) : (
+              <CardPerforme />
+            )}
+          </div>
+        </div>
+        <div
+          className="modal fade"
+          id="exampleModal"
+          tabIndex="-1"
+          aria-labelledby="exampleModalLabel"
+          aria-hidden="true"
+        >
+          <div className="modal-dialog">
+            <div className="modal-content">
+              <div className="modal-header">
+                <h5 className="modal-title" id="exampleModalLabel">
+                  Modal title
+                </h5>
+                <button
+                  type="button"
+                  className="btn-close"
+                  data-bs-dismiss="modal"
+                  aria-label="Close"
+                ></button>
+              </div>
+              <div className="modal-body">
+                <Calendar onChange={setValueCalendar} value={valueCalendar} />
+              </div>
+              <div className="modal-footer">
+                <button
+                  type="button"
+                  className="button-map"
+                  data-bs-dismiss="modal"
+                  onClick={() => hire()}
+                >
+                  Save
+                </button>
+              </div>
+            </div>
           </div>
         </div>
       </>

@@ -15,6 +15,7 @@ const Profile = () => {
   const base_url = useSelector((state) => state.base_url);
   const [profileOwner, setProfileOwner] = useState([]);
   const token = localStorage.getItem("token");
+  const id = localStorage.getItem("id");
   const [viewState, setViewState] = useState({
     longitude: 0,
     latitude: 0,
@@ -22,6 +23,7 @@ const Profile = () => {
   });
 
   const [imageCafe, setImageCafe] = useState("");
+  const [avatar, setAvatar] = useState("");
 
   useEffect(() => {
     setProfile();
@@ -77,6 +79,23 @@ const Profile = () => {
       });
   };
 
+  const updateImage = () => {
+    var formData = new FormData();
+    formData.append("avatar", avatar);
+    axios
+      .put(`${base_url}/cafe/${id}`, formData, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
+      .then((res) => {
+        setProfile();
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
   if (profileOwner.length === 0) {
     return (
       <div className="text-center">
@@ -90,13 +109,22 @@ const Profile = () => {
       <>
         <div className="container mt-3">
           <div className="row mb-3">
-            <div className="col-3">
-              <img src={`${image}`} className="img-fluid rounded" alt="..." />
+            <div className="col-2 position-relative me-5">
+              <img
+                src={`${profileOwner.avatar}`}
+                className="img-fluid rounded position-absolute top-50 start-50 translate-middle"
+                alt="..."
+              />
+              <i
+                className="bi bi-pencil-square position-absolute bottom-0 end-0"
+                data-bs-toggle="modal"
+                data-bs-target="#modalImage"
+              ></i>
             </div>
             <div className="col-4">
-              <h2>{profileOwner.cafe_name}</h2>
-              <p>by {profileOwner.owner}</p>
-              <p>{profileOwner.address}</p>
+              <h2 className="text-capitalize">{profileOwner.cafe_name}</h2>
+              <p className="text-capitalize">by {profileOwner.owner}</p>
+              <p className="text-capitalize">{profileOwner.address}</p>
               <p>{profileOwner.phone_number}</p>
               <p>OPEN 9.30 - 21.00</p>
             </div>
@@ -175,6 +203,50 @@ const Profile = () => {
                   className="button-map"
                   data-bs-dismiss="modal"
                   onClick={() => postImage()}
+                >
+                  Save
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          className="modal fade"
+          id="modalImage"
+          tabindex="-1"
+          aria-labelledby="exampleModalLabel"
+          aria-hidden="true"
+        >
+          <div className="modal-dialog">
+            <div className="modal-content">
+              <div className="modal-header">
+                <h5 className="modal-title" id="exampleModalLabel">
+                  Change Image
+                </h5>
+                <button
+                  type="button"
+                  className="btn-close"
+                  data-bs-dismiss="modal"
+                  aria-label="Close"
+                ></button>
+              </div>
+              <div className="modal-body">
+                <div className="input-group mb-3" style={{ width: "476px" }}>
+                  <input
+                    type="file"
+                    className="form-control"
+                    id="inputGroupFile02"
+                    style={{ borderRadius: "21px" }}
+                    onChange={(e) => setAvatar(e.target.files[0])}
+                  />
+                </div>
+              </div>
+              <div className="modal-footer">
+                <button
+                  type="button"
+                  className="btn btn-primary"
+                  data-bs-dismiss="modal"
+                  onClick={() => updateImage()}
                 >
                   Save
                 </button>

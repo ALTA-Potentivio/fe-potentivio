@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import "mapbox-gl/dist/mapbox-gl.css";
 import "@fontsource/roboto";
+import "react-calendar/dist/Calendar.css";
 import Route from "./routes/Router";
 
 import "bootstrap/dist/css/bootstrap.min.css";
