@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { reduxAction } from "../utils/redux/actions/action";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import axios from "axios";
 
 import "../styles/headerowner.css";
@@ -15,6 +15,7 @@ const HeaderOwner = () => {
   const token = localStorage.getItem("token");
   const dispatch = useDispatch();
   let navigate = useNavigate();
+  let location = useLocation();
 
   useEffect(() => {
     getProfile();
@@ -84,20 +85,41 @@ const HeaderOwner = () => {
                   }}
                 >
                   <ul className="navbar-nav responsive me-auto mt-2 mt-lg-0">
-                    <li className="nav-item active position-relative">
-                      <a
-                        className="nav-link main"
-                        style={{ color: "#243142" }}
-                        href="/owner"
-                      >
-                        Home
-                      </a>
-                    </li>
-                    <li className="nav-item position-relative">
-                      <a className="nav-link" href="#">
-                        Hire Status
-                      </a>
-                    </li>
+                    {location.pathname === "/owner/hire-owner" ? (
+                      <>
+                        <li className="nav-item position-relative">
+                          <a
+                            className="nav-link main"
+                            style={{ color: "#243142" }}
+                            href="/owner"
+                          >
+                            Home
+                          </a>
+                        </li>
+                        <li className="nav-item active position-relative">
+                          <a className="nav-link" href="/owner/hire-owner">
+                            Hire Status
+                          </a>
+                        </li>
+                      </>
+                    ) : (
+                      <>
+                        <li className="nav-item active position-relative">
+                          <a
+                            className="nav-link main"
+                            style={{ color: "#243142" }}
+                            href="/owner"
+                          >
+                            Home
+                          </a>
+                        </li>
+                        <li className="nav-item position-relative">
+                          <a className="nav-link" href="/owner/hire-owner">
+                            Hire Status
+                          </a>
+                        </li>
+                      </>
+                    )}
                     <li className="nav-item position-relative">
                       <a
                         className="nav-link"
@@ -189,20 +211,41 @@ const HeaderOwner = () => {
 
           <div className="collapse navbar-collapse" id="navbarTogglerDemo">
             <ul className="navbar-nav mx-auto mt-2 mt-lg-0">
-              <li className="nav-item active position-relative">
-                <a
-                  className="nav-link main="
-                  style={{ color: "#243142" }}
-                  href="/owner"
-                >
-                  Home
-                </a>
-              </li>
-              <li className="nav-item position-relative">
-                <a className="nav-link" href="#">
-                  Hire Status
-                </a>
-              </li>
+              {location.pathname === "/owner/hire-owner" ? (
+                <>
+                  <li className="nav-item position-relative">
+                    <a
+                      className="nav-link main"
+                      style={{ color: "#243142" }}
+                      href="/owner"
+                    >
+                      Home
+                    </a>
+                  </li>
+                  <li className="nav-item active position-relative">
+                    <a className="nav-link" href="/owner/hire-owner">
+                      Hire Status
+                    </a>
+                  </li>
+                </>
+              ) : (
+                <>
+                  <li className="nav-item active position-relative">
+                    <a
+                      className="nav-link main"
+                      style={{ color: "#243142" }}
+                      href="/owner"
+                    >
+                      Home
+                    </a>
+                  </li>
+                  <li className="nav-item position-relative">
+                    <a className="nav-link" href="/owner/hire-owner">
+                      Hire Status
+                    </a>
+                  </li>
+                </>
+              )}
               <li className="nav-item my-auto">
                 <a
                   className="nav-link"

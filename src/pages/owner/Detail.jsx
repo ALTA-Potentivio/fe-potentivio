@@ -1,7 +1,9 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import Calendar from "react-calendar";
+import Swal from "sweetalert2";
 import { Rating } from "react-simple-star-rating";
 
 import CardAvailable from "../../components/detail-owner/CardAvailable";
@@ -14,6 +16,7 @@ const Detail = () => {
   const base_url = useSelector((state) => state.base_url);
   const token = localStorage.getItem("token");
   const params = useParams();
+  let navigate = useNavigate();
   const [detail, setDetail] = useState([]);
   const [price, setPrice] = useState(0);
   const [valueCalendar, setValueCalendar] = useState(new Date());
@@ -69,10 +72,22 @@ const Detail = () => {
         }
       )
       .then((res) => {
-        console.log(res);
+        const data = res.data;
+        Swal.fire({
+          title: "Sukses",
+          text: `${data.message}`,
+          icon: "success",
+          confirmButtonText: "Berhasil",
+        });
+        navigate("/owner");
       })
       .catch((err) => {
-        console.log(err);
+        Swal.fire({
+          title: "Gagal",
+          text: "gagal hire artist",
+          icon: "error",
+          confirmButtonText: "Gagal",
+        });
       });
   };
 
