@@ -38,7 +38,7 @@ const CompleteOwner = () => {
     formData.append("longitude", longitude);
     formData.append("latitude", latitude);
     axios
-      .put(`${base_url}/cafe/${id}`, formData, {
+      .put(`${base_url}/cafe/profile`, formData, {
         headers: {
           Authorization: `Bearer ${token}`,
         },

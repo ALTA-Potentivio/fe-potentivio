@@ -275,7 +275,7 @@ const HeaderOwner = () => {
                 alt=""
               />
             </a>
-            <a href="owner/profile-owner">
+            <a href="/owner/profile-owner">
               <img
                 style={{ width: "30px" }}
                 src={`${profileOwner.avatar}`}

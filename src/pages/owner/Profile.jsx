@@ -4,7 +4,8 @@ import Map, { Marker } from "react-map-gl";
 import axios from "axios";
 import Swal from "sweetalert2";
 
-import image from "../../assets/image-6.png";
+import ModalEdit from "../../components/profile-owner/ModalEdit";
+
 import album from "../../assets/image-5.png";
 import addImage from "../../assets/Group-10.png";
 
@@ -83,12 +84,19 @@ const Profile = () => {
     var formData = new FormData();
     formData.append("avatar", avatar);
     axios
-      .put(`${base_url}/cafe/${id}`, formData, {
+      .put(`${base_url}/cafe/profile`, formData, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
       })
       .then((res) => {
+        const data = res.data;
+        Swal.fire({
+          title: "Sukses",
+          text: `${data.message}`,
+          icon: "success",
+          confirmButtonText: "Berhasil",
+        });
         setProfile();
       })
       .catch((err) => {
@@ -127,6 +135,11 @@ const Profile = () => {
               <p className="text-capitalize">{profileOwner.address}</p>
               <p>{profileOwner.phone_number}</p>
               <p>OPEN 9.30 - 21.00</p>
+              <p>No Rekening: {profileOwner.account_number}</p>
+              <ModalEdit
+                item={profileOwner}
+                parentCallback={() => setProfile()}
+              />
             </div>
             <div className="col">
               <Map
@@ -213,7 +226,7 @@ const Profile = () => {
         <div
           className="modal fade"
           id="modalImage"
-          tabindex="-1"
+          tabIndex="-1"
           aria-labelledby="exampleModalLabel"
           aria-hidden="true"
         >
