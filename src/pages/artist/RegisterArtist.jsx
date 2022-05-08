@@ -1,10 +1,66 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
+import axios from "axios";
 import "../../styles/login.css";
 
 import logo from "../../assets/logo.svg";
 
 const RegisterArtist = () => {
+
+  const base_url = useSelector((state) => state.base_url);
+  let navigate = useNavigate();
+  const [artistName, setArtistName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [address, setAddress] = useState("");
+
+  const updateArtistName = (event) => {
+    setArtistName(event.target.value);
+  };
+
+  const updateEmail = (event) => {
+    setEmail(event.target.value);
+  };
+
+  const updatePassword = (event) => {
+    setPassword(event.target.value);
+  };
+
+  const updateAddress = (event) => {
+    setAddress(event.target.value);
+  };
+
+  const submit = () => {
+    axios
+    .post(`${base_url}/artist`, {
+      artist_name: artistName,
+      email: email,
+      password: password,
+      address: address,
+    })
+    .then((res) => {
+      const data = res.data;
+      Swal.fire({
+        title: "Sukses",
+        text: `${data.message}`,
+        icon: "success",
+        confirmButtonText: "Berhasil",
+      });
+      navigate("/");
+    })
+    .catch((err) => {
+      Swal.fire({
+        title: "Gagal",
+        text: `Incomplete data`,
+        icon: "error",
+        confirmButtonText: "Gagal",
+      });
+    });
+  };
+
   return (
     <>
       <div className="row w-100">
@@ -21,8 +77,10 @@ const RegisterArtist = () => {
               <input
                 type="text"
                 className="form-control"
-                id="floatingInput"
+                id="artistName"
                 style={{ borderRadius: "21px" }}
+                value={artistName}
+                onChange={updateArtistName}
               />
               <label htmlFor="floatingInput">Artist name</label>
             </div>
@@ -30,8 +88,10 @@ const RegisterArtist = () => {
               <input
                 type="email"
                 className="form-control"
-                id="floatingInput"
+                id="email"
                 style={{ borderRadius: "21px" }}
+                value={email}
+                onChange={updateEmail}
               />
               <label htmlFor="floatingInput">Your email</label>
             </div>
@@ -39,8 +99,10 @@ const RegisterArtist = () => {
               <input
                 type="password"
                 className="form-control"
-                id="floatingInput"
+                id="password"
                 style={{ borderRadius: "21px" }}
+                value={password}
+                onChange={updatePassword}
               />
               <label htmlFor="floatingInput">Your password</label>
             </div>
@@ -48,14 +110,20 @@ const RegisterArtist = () => {
               <input
                 type="text"
                 className="form-control"
-                id="floatingInput"
+                id="address"
                 style={{ borderRadius: "21px" }}
+                value={address}
+                onChange={updateAddress}
               />
               <label htmlFor="floatingInput">Your address</label>
             </div>
           </form>
           <div className="mt-5">
-            <button type="button" className="button-login fw-bolder">
+            <button 
+              type="button"
+              className="button-login fw-bolder"
+              onClick={() => submit()}
+            >
               Register
             </button>
           </div>
