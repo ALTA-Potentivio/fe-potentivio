@@ -96,6 +96,19 @@ const CardHire = ({ item, parentCallback }) => {
             </div>
           </div>
         )}
+        {item.status_cafe === "waiting payment" && (
+          <div className="col pt-4">
+            <div className="d-flex justify-content-evenly">
+              <h3 className="pt-2">WAITING PAYMENT</h3>
+              <button
+                type="button"
+                className="button-map"
+              >
+                PAY
+              </button>
+            </div>
+          </div>
+        )}
       </div>
     </>
   );

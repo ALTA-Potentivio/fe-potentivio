@@ -68,7 +68,7 @@ const CardInbox = ({ item, parentCallback }) => {
 
   const accept = () => {
     axios
-      .put(
+      .post(
         `${base_url}/accept/${item.id}`,
         { id: item.id },
         {
@@ -78,7 +78,14 @@ const CardInbox = ({ item, parentCallback }) => {
         }
       )
       .then((res) => {
-        console.log(res);
+        const data = res.data;
+        Swal.fire({
+          title: "Sukses",
+          text: `${data.message}`,
+          icon: "success",
+          confirmButtonText: "Berhasil",
+        });
+        parentCallback();
       })
       .catch((err) => {
         console.log(err);
@@ -122,23 +129,13 @@ const CardInbox = ({ item, parentCallback }) => {
             </div>
           </div>
         )}
-        {/* {item.status_artist === "waiting" && (
+        {item.status_artist === "waiting payment" && (
           <div className="col pt-4">
             <div className="d-flex justify-content-evenly">
-              <button
-                type="button"
-                className="button-map"
-                style={{ backgroundColor: "white", color: "#53b8d1" }}
-                onClick={() => reject()}
-              >
-                REJECT
-              </button>
-              <button type="button" className="button-map">
-                ACCEPT
-              </button>
+              <h3 className="pt-2">WAITING PAYMENT</h3>
             </div>
           </div>
-        )} */}
+        )}
       </div>
     </>
   );
