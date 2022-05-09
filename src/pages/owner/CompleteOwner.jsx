@@ -11,7 +11,6 @@ const CompleteOwner = () => {
   let navigate = useNavigate();
   const base_url = useSelector((state) => state.base_url);
   const token = localStorage.getItem("token");
-  const id = localStorage.getItem("id");
   const [viewState, setViewState] = useState({
     longitude: 106.8296006299729,
     latitude: -6.172645040772892,
@@ -23,6 +22,7 @@ const CompleteOwner = () => {
   const [longitude, setLongitude] = useState("");
   const [latitude, setLatitude] = useState("");
   const [description, setDescription] = useState("");
+  const [noRek, setNoRek] = useState("");
 
   const updateLanglat = () => {
     setLongitude(viewState.longitude);
@@ -34,6 +34,7 @@ const CompleteOwner = () => {
     formData.append("phone_number", phoneNumber);
     formData.append("description", description);
     formData.append("opening_hours", openingHours);
+    formData.append("account_number", noRek);
     formData.append("avatar", avatar);
     formData.append("longitude", longitude);
     formData.append("latitude", latitude);
@@ -57,6 +58,17 @@ const CompleteOwner = () => {
         <h1>Almost Done!</h1>
         <p>Complete your profile first</p>
         <form className="needs-validation" noValidate>
+          <div className="form-floating mb-3 input-form">
+            <input
+              type="text"
+              className="form-control"
+              id="NoRek"
+              style={{ borderRadius: "21px" }}
+              onChange={(e) => setNoRek(e.target.value)}
+              required
+            />
+            <label htmlFor="NoRek">No. Rekening</label>
+          </div>
           <div className="row">
             <div className="col">
               <div className="form-floating mb-3 input-form">
@@ -138,9 +150,7 @@ const CompleteOwner = () => {
               </div>
             </div>
           </div>
-          <div
-            className="form-floating input-form mb-3 pe-5 w-100"
-          >
+          <div className="form-floating input-form mb-3 pe-5 w-100">
             <textarea
               type="text"
               className="form-control"

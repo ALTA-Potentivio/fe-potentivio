@@ -8,7 +8,6 @@ import image from "../../assets/image-3.png";
 const CardHire = ({ item, parentCallback }) => {
   const base_url = useSelector((state) => state.base_url);
   const token = localStorage.getItem("token");
-  const id = localStorage.getItem("id");
   const [time, setTime] = useState("");
 
   useEffect(() => {
@@ -43,6 +42,9 @@ const CardHire = ({ item, parentCallback }) => {
     axios
       .put(
         `${base_url}/cafe/cancel/${item.id}`,
+        {
+          id: item.id,
+        },
         {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -89,7 +91,7 @@ const CardHire = ({ item, parentCallback }) => {
                 className="button-map"
                 onClick={() => cancel()}
               >
-                Cancel
+                CANCEL
               </button>
             </div>
           </div>

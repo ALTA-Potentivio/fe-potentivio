@@ -4,8 +4,6 @@ import axios from "axios";
 
 import CardInbox from "../../components/inbox/CardInbox";
 
-import image from "../../assets/image-3.png";
-
 const Inbox = () => {
   const base_url = useSelector((state) => state.base_url);
   const token = localStorage.getItem("token");
@@ -31,19 +29,28 @@ const Inbox = () => {
         console.log(err);
       });
   };
-
-  return (
-    <>
-      <div className="container mt-5">
-        <div className="pt-5 pb-5 border-top border-bottom">
-          <CardInbox />
-        </div>
-        <div className="pt-5 pb-5 border-top border-bottom">
-          <CardInbox />
-        </div>
+  
+  if (dataInbox.length === 0) {
+    return (
+      <div className="text-center">
+        <h1>data not found</h1>
       </div>
-    </>
-  );
+    );
+  } else {
+    return (
+      <>
+        <div className="container mt-5">
+          {dataInbox.map((item) => {
+            return (
+              <div className="pt-5 pb-5 border-top border-bottom" key={item.id}>
+                <CardInbox item={item} parentCallback={() => getDataInbox()} />
+              </div>
+            );
+          })}
+        </div>
+      </>
+    );
+  }
 };
 
 export default Inbox;
