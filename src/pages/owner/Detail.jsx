@@ -60,7 +60,7 @@ const Detail = () => {
   const hire = () => {
     const { id } = params;
     const temp = valueCalendar.toISOString();
-    const date = temp.split("T")
+    const date = temp.split("T");
     console.log(date);
     axios
       .post(
@@ -120,7 +120,11 @@ const Detail = () => {
               <div className="d-flex mb-2">
                 <p className="pt-2 pe-2">Rating :</p>
                 <div>
-                  <Rating fillColor={`#53b8d1`} initialValue={detail.rating} readonly/>
+                  <Rating
+                    fillColor={`#53b8d1`}
+                    initialValue={detail.rating}
+                    readonly
+                  />
                   <p>{detail.total_rate} Orang Yang Sudah Menilai</p>
                 </div>
                 <p className="pt-2 ps-2">{detail.rating}/5</p>
@@ -143,7 +147,21 @@ const Detail = () => {
             <h3 className="mt-3">Description</h3>
             <p className="text-capitalize">{detail.description}</p>
             <div className="mb-5 d-flex justify-content-around">
-              <Video />
+              {detail.video_artist.length === 0 ? (
+                <div className="container-fluid d-flex flex-grow-1 flex-wrap justify-content-around pt-3 mt-3 mb-5">
+                  <h1>No schedule yet</h1>
+                </div>
+              ) : (
+                <div className="container-fluid d-flex flex-grow-1 flex-wrap justify-content-around pt-3 mt-3 mb-5">
+                  {detail.video_artist.map((item) => {
+                    return (
+                      <div key={item.id}>
+                        <Video item={item} />
+                      </div>
+                    );
+                  })}
+                </div>
+              )}
             </div>
           </div>
           <div className="mt-3 border-bottom">

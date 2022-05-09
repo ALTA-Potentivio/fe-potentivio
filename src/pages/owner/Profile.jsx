@@ -16,7 +16,6 @@ const Profile = () => {
   const base_url = useSelector((state) => state.base_url);
   const [profileOwner, setProfileOwner] = useState([]);
   const token = localStorage.getItem("token");
-  const id = localStorage.getItem("id");
   const [viewState, setViewState] = useState({
     longitude: 0,
     latitude: 0,
