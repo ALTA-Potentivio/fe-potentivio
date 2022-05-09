@@ -147,4 +147,4 @@ const HeaderArtist = () => {
         </>
     )
 }
-export default HeaderOwner;
+export default HeaderArtist;

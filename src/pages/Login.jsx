@@ -17,7 +17,29 @@ const Login = () => {
 
   const submit = () => {
     if (status === "artist") {
-      console.log("artis");
+      axios
+        .post(`${base_url}/login/artist`, {
+          email: email,
+          password: password,
+        })
+        .then((res) => {
+          const data = res.data;
+          localStorage.setItem("token", data.data.token);
+          localStorage.setItem("id", data.data.id_artist);
+          if (data.data.status_profile === "not complete") {
+            navigate("/complete-artist");
+          } else {
+            navigate("/artist");
+          }
+        })
+        .catch((err) => {
+          Swal.fire({
+            title: "Gagal",
+            text: `Incomplete data`,
+            icon: "error",
+            confirmButtonText: "Gagal",
+          });
+        });
     } else {
       axios
         .post(`${base_url}/login/cafe-owner`, {
@@ -33,7 +55,6 @@ const Login = () => {
           } else {
             navigate("/owner");
           }
-          console.log(data);
         })
         .catch((err) => {
           Swal.fire({

@@ -16,12 +16,14 @@ import Notification from "../pages/owner/Notification";
 import ProfileOwner from "../pages/owner/Profile";
 import Rating from "../pages/owner/Rating";
 
+import CompleteArtist from "../pages/artist/CompleteArtist";
 import HomeArtist from "../pages/artist/Home";
 import DetailArtist from "../pages/artist/Detail";
 import InboxArtist from "../pages/artist/Inbox";
 import ProfileArtist from "../pages/artist/Profile";
 
 import LayoutOwner from "../components/LayoutOwner";
+import LayoutArtist from "../components/LayoutArtist";
 
 function Index() {
   return (
@@ -41,10 +43,13 @@ function Index() {
             <Route path="profile-owner" element={<ProfileOwner />} />
             <Route path="rating" element={<Rating />} />
           </Route>
-          <Route path="/home-artist" element={<HomeArtist />} />
-          <Route path="/detail-artist" element={<DetailArtist />} />
-          <Route path="/inbox-artist" element={<InboxArtist />} />
-          <Route path="/profile-artist" element={<ProfileArtist />} />
+          <Route path="/complete-artist" element={<CompleteArtist />} />
+          <Route path="/artist" element={<LayoutArtist />}>
+            <Route index element={<HomeArtist />} />
+            <Route path="detail-artist" element={<DetailArtist />} />
+            <Route path="inbox-artist" element={<InboxArtist />} />
+            <Route path="profile-artist" element={<ProfileArtist />} />
+          </Route>
         </Routes>
       </BrowserRouter>
     </Provider>
