@@ -82,7 +82,7 @@ const Detail = () => {
           icon: "success",
           confirmButtonText: "Berhasil",
         });
-        // navigate("/owner");
+        navigate("/owner");
       })
       .catch((err) => {
         Swal.fire({

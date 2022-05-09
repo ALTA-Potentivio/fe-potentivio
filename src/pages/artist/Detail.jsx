@@ -1,10 +1,37 @@
 import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+import { useSelector } from "react-redux";
+import axios from "axios";
 
 import image from "../../assets/image-6.png";
 import album from "../../assets/image-5.png";
 import peta from "../../assets/image-7.png";
 
 const Detail = () => {
+  const base_url = useSelector((state) => state.base_url);
+  const token = localStorage.getItem("token");
+  const params = useParams();
+
+  useEffect(() => {
+    getDetail();
+  }, []);
+
+  const getDetail = () => {
+    const { id } = params;
+    axios
+      .get(`${base_url}/cafe/${id}`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
   return (
     <>
       <div className="container mt-3">
@@ -21,11 +48,7 @@ const Detail = () => {
             <p>OPEN 9.30 - 21.00</p>
           </div>
           <div className="col">
-            <img
-              src={`${peta}`}
-              className="img-fluid rounded me-4"
-              alt="..."
-            />
+            <img src={`${peta}`} className="img-fluid rounded me-4" alt="..." />
           </div>
         </div>
         <div className="border-top border-bottom">

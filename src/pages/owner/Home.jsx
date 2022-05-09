@@ -36,7 +36,7 @@ const Home = () => {
 
   const getArtist = () => {
     axios
-      .get(`${base_url}/artist?price=desc&address=${address}`, {
+      .get(`${base_url}/artist?price=asc  &address=${address}`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },

@@ -7,7 +7,6 @@ import axios from "axios";
 import "../styles/headerowner.css";
 import logo from "../assets/headerlogo.png";
 import notif from "../assets/notifs.png";
-import profile from "../assets/profile.png";
 
 const HeaderOwner = () => {
   const base_url = useSelector((state) => state.base_url);

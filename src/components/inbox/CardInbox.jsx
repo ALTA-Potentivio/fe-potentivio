@@ -14,10 +14,8 @@ const CardInbox = () => {
               alt="..."
             />
             <div className="ms-3 mt-3">
-              <p>
                 <h5>Sunday Band</h5>
                 <small>22 Desember 2022</small>
-              </p>
             </div>
           </div>
         </div>
