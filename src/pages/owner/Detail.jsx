@@ -59,11 +59,14 @@ const Detail = () => {
 
   const hire = () => {
     const { id } = params;
+    const temp = valueCalendar.toISOString();
+    const date = temp.split("T")
+    console.log(date);
     axios
       .post(
         `${base_url}/hire/${id}`,
         {
-          date: valueCalendar.toISOString(),
+          date: date[0],
         },
         {
           headers: {
@@ -79,7 +82,7 @@ const Detail = () => {
           icon: "success",
           confirmButtonText: "Berhasil",
         });
-        navigate("/owner");
+        // navigate("/owner");
       })
       .catch((err) => {
         Swal.fire({
