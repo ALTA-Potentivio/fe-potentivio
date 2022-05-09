@@ -44,9 +44,6 @@ const CardHire = ({ item, parentCallback }) => {
       .put(
         `${base_url}/cafe/cancel/${item.id}`,
         {
-          id: id,
-        },
-        {
           headers: {
             Authorization: `Bearer ${token}`,
           },

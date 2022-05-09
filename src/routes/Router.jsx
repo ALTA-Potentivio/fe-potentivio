@@ -46,7 +46,7 @@ function Index() {
           <Route path="/complete-artist" element={<CompleteArtist />} />
           <Route path="/artist" element={<LayoutArtist />}>
             <Route index element={<HomeArtist />} />
-            <Route path="detail-artist" element={<DetailArtist />} />
+            <Route path="detail-artist/:id" element={<DetailArtist />} />
             <Route path="inbox-artist" element={<InboxArtist />} />
             <Route path="profile-artist" element={<ProfileArtist />} />
           </Route>
