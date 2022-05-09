@@ -139,8 +139,7 @@ const CompleteOwner = () => {
             </div>
           </div>
           <div
-            className="form-floating input-form mb-3"
-            style={{ width: "1050px" }}
+            className="form-floating input-form mb-3 pe-5 w-100"
           >
             <textarea
               type="text"
