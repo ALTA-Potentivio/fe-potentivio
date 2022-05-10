@@ -165,7 +165,7 @@ const HeaderArtist = () => {
                   className="modal-footer border-0"
                   style={{ padding: "2rem", paddingTop: "0.75rem" }}
                 >
-                  <a href="#">
+                  <a href="/artist/profile-artist">
                     <img style={{ width: "30px" }} src={`${profile}`} alt="" />
                   </a>
                 </div>
@@ -275,7 +275,7 @@ const HeaderArtist = () => {
                 </form>
               </li>
             </ul>
-            <a href="#">
+            <a href="/artist/profile-artist">
               <img style={{ width: "30px" }} src={`${profile}`} alt="" />
             </a>
           </div>

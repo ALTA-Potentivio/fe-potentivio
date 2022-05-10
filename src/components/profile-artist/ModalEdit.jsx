@@ -1,51 +1,41 @@
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
-import Map, { Marker } from "react-map-gl";
 import axios from "axios";
 import Swal from "sweetalert2";
-
-const MAPBOX_TOKEN =
-  "pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4M29iazA2Z2gycXA4N2pmbDZmangifQ.-g_vE53SD2WrJ6tFX7QHmA";
 
 const ModalEdit = ({ item, parentCallback }) => {
   const base_url = useSelector((state) => state.base_url);
   const token = localStorage.getItem("token");
-  const [viewState, setViewState] = useState({
-    longitude: 106.8296006299729,
-    latitude: -6.172645040772892,
-    zoom: 14,
-  });
-
-  const [ownerName, setOwnerName] = useState("");
-  const [cafeName, setCafeName] = useState("");
+  
+  const [artistName, setArtistName] = useState("");
   const [email, setEmail] = useState("");
   const [address, setAddress] = useState("");
 
   const [phoneNumber, setPhoneNumber] = useState("");
-  const [openingHours, setOpeningHours] = useState("");
+  const [price, setPrice] = useState("");
   const [noRek, setNoRek] = useState("");
-  const [longitude, setLongitude] = useState("");
-  const [latitude, setLatitude] = useState("");
   const [description, setDescription] = useState("");
+  const [category, setCategory] = useState([]);
+  const [valueCtgy, setValueCtgy] = useState("");
+  const [genre, setGenre] = useState([]);
+  const [valueGenre, setValueGenre] = useState("");
 
   useEffect(() => {
-    setOwnerName(item.owner);
-    setCafeName(item.cafe_name);
+    getCategory();
+    getGanre();
+    setArtistName(item.artist_name);
     setEmail(item.email);
     setAddress(item.address);
     setPhoneNumber(item.phone_number);
-    setLongitude(item.longitude);
-    setLatitude(item.latitude);
     setDescription(item.description);
-    console.log(item);
+    setPrice(item.price);
+    setNoRek(item.account_number);
+    setValueCtgy(item.id_catagory);
+    setValueGenre(item.id_genre);
   }, []);
 
-  const updateCafeName = (event) => {
-    setCafeName(event.target.value);
-  };
-
-  const updateOwnerName = (event) => {
-    setOwnerName(event.target.value);
+  const updateArtistName = (event) => {
+    setArtistName(event.target.value);
   };
 
   const updateEmail = (event) => {
@@ -56,25 +46,49 @@ const ModalEdit = ({ item, parentCallback }) => {
     setAddress(event.target.value);
   };
 
-  const updateLanglat = () => {
-    setLongitude(viewState.longitude);
-    setLatitude(viewState.latitude);
+  const getCategory = () => {
+    axios
+      .get(`${base_url}/category`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
+      .then((res) => {
+        setCategory(res.data.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
+  const getGanre = () => {
+    axios
+      .get(`${base_url}/genre`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
+      .then((res) => {
+        setGenre(res.data.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
 
   const submit = () => {
+    // console.log(valueCtgy);
     var formData = new FormData();
-    formData.append("cafe_name", cafeName);
-    formData.append("owner", ownerName);
+    formData.append("artist_name", artistName);
     formData.append("email", email);
     formData.append("address", address);
     formData.append("phone_number", phoneNumber);
     formData.append("description", description);
-    formData.append("opening_hours", openingHours);
-    formData.append("longitude", longitude);
-    formData.append("latitude", latitude);
     formData.append("account_number", noRek);
+    formData.append("id_category", valueCtgy);
+    formData.append("id_genre", valueGenre);
     axios
-      .put(`${base_url}/cafe/profile`, formData, {
+      .put(`${base_url}/artist/profile`, formData, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -134,10 +148,10 @@ const ModalEdit = ({ item, parentCallback }) => {
                       className="form-control"
                       id="cafeName"
                       style={{ borderRadius: "21px" }}
-                      value={cafeName}
-                      onChange={updateCafeName}
+                      value={artistName}
+                      onChange={updateArtistName}
                     />
-                    <label htmlFor="cafeName">Your cafe name</label>
+                    <label htmlFor="cafeName">Artist name</label>
                   </div>
                   <div className="form-floating mb-3 input-form">
                     <input
@@ -156,17 +170,6 @@ const ModalEdit = ({ item, parentCallback }) => {
                     <input
                       type="text"
                       className="form-control"
-                      id="ownerName"
-                      style={{ borderRadius: "21px" }}
-                      value={ownerName}
-                      onChange={updateOwnerName}
-                    />
-                    <label htmlFor="ownerName">Owner cafe’s name</label>
-                  </div>
-                  <div className="form-floating mb-3 input-form">
-                    <input
-                      type="text"
-                      className="form-control"
                       id="address"
                       style={{ borderRadius: "21px" }}
                       value={address}
@@ -174,10 +177,6 @@ const ModalEdit = ({ item, parentCallback }) => {
                     />
                     <label htmlFor="address">Your cafe’s address</label>
                   </div>
-                </div>
-              </div>
-              <div className="row">
-                <div className="col">
                   <div className="form-floating mb-3 input-form">
                     <input
                       type="text"
@@ -191,32 +190,8 @@ const ModalEdit = ({ item, parentCallback }) => {
                     <label htmlFor="phoneNumber">Your Phone Number</label>
                   </div>
                 </div>
-                <div className="col">
-                  <div className="form-floating mb-3 input-form">
-                    <input
-                      type="text"
-                      className="form-control"
-                      id="openHours"
-                      style={{ borderRadius: "21px" }}
-                      required
-                    />
-                    <label htmlFor="openHours">
-                      Open Hours (08.00 - 23.00)
-                    </label>
-                  </div>
-                </div>
               </div>
               <div className="row">
-                <div className="col">
-                  <button
-                    type="button"
-                    className="button-map mb-3"
-                    data-bs-toggle="modal"
-                    data-bs-target="#modalMap"
-                  >
-                    See Maps
-                  </button>
-                </div>
                 <div className="col">
                   <div className="form-floating mb-3 input-form">
                     <input
@@ -231,34 +206,70 @@ const ModalEdit = ({ item, parentCallback }) => {
                     <label htmlFor="openHours">No. Rekening</label>
                   </div>
                 </div>
+                <div className="col">
+                  <div className="form-floating mb-3 input-form">
+                    <input
+                      type="text"
+                      className="form-control"
+                      id="price"
+                      style={{ borderRadius: "21px" }}
+                      value={price}
+                      onChange={(e) => setPrice(e.target.value)}
+                      required
+                    />
+                    <label htmlFor="price">Price</label>
+                  </div>
+                </div>
               </div>
               <div className="row">
                 <div className="col">
                   <div className="form-floating mb-3 input-form">
-                    <input
-                      type="text"
-                      className="form-control"
-                      id="longitude"
-                      style={{ borderRadius: "21px" }}
-                      value={longitude}
-                      onChange={() => setLongitude()}
-                      disabled
-                    />
-                    <label htmlFor="longitude">Longitude</label>
+                    <select
+                      id="category"
+                      className="form-select form-select-lg me-5"
+                      aria-label=".form-select-lg example"
+                      style={{
+                        height: "65px",
+                        borderRadius: "21px",
+                      }}
+                      value={valueCtgy}
+                      onChange={(e) => setValueCtgy(e.target.value)}
+                    >
+                      <option value="">Category</option>
+                      {category.map((item) => {
+                        return (
+                          <option value={item.id} key={item.id}>
+                            {item.name_catagory}
+                          </option>
+                        );
+                      })}
+                    </select>
+                    <label htmlFor="category">Category</label>
                   </div>
                 </div>
                 <div className="col">
                   <div className="form-floating mb-3 input-form">
-                    <input
-                      type="text"
-                      className="form-control"
-                      id="longitude"
-                      style={{ borderRadius: "21px" }}
-                      value={latitude}
-                      onChange={() => setLatitude()}
-                      disabled
-                    />
-                    <label htmlFor="longitude">Latitude</label>
+                    <select
+                      id="genre"
+                      className="form-select form-select-lg"
+                      aria-label=".form-select-lg example"
+                      style={{
+                        height: "65px",
+                        borderRadius: "21px",
+                      }}
+                      value={valueGenre}
+                      onChange={(e) => setValueGenre(e.target.value)}
+                    >
+                      <option value="">Genre</option>
+                      {genre.map((item) => {
+                        return (
+                          <option value={item.id} key={item.id}>
+                            {item.name_genre}
+                          </option>
+                        );
+                      })}
+                    </select>
+                    <label htmlFor="ganre">Ganre</label>
                   </div>
                 </div>
               </div>
@@ -280,64 +291,6 @@ const ModalEdit = ({ item, parentCallback }) => {
                 className="btn btn-primary"
                 data-bs-dismiss="modal"
                 onClick={() => submit()}
-              >
-                Save
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div
-        className="modal fade"
-        id="modalMap"
-        tabIndex="-1"
-        aria-labelledby="modalMapLabel"
-        aria-hidden="true"
-      >
-        <div className="modal-dialog">
-          <div className="modal-content">
-            <div className="modal-header">
-              <h5 className="modal-title" id="modalMapLabel">
-                Modal Map
-              </h5>
-              <button
-                type="button"
-                className="btn-close"
-                data-bs-dismiss="modal"
-                aria-label="Close"
-                data-bs-toggle="modal"
-                data-bs-target="#exampleModal"
-              ></button>
-            </div>
-            <div className="modal-body">
-              <div className="sidebar">
-                <p>
-                  Longitude: {viewState.longitude} | Latitude:{" "}
-                  {viewState.latitude} | Zoom: {viewState.zoom}
-                </p>
-              </div>
-              <Map
-                {...viewState}
-                style={{ width: 450, height: 300 }}
-                onMove={(evt) => setViewState(evt.viewState)}
-                mapStyle="mapbox://styles/mapbox/streets-v9"
-                mapboxAccessToken={MAPBOX_TOKEN}
-              >
-                <Marker
-                  longitude={viewState.longitude}
-                  latitude={viewState.latitude}
-                  color="red"
-                />
-              </Map>
-            </div>
-            <div className="modal-footer">
-              <button
-                type="button"
-                className="button-map"
-                data-bs-dismiss="modal"
-                data-bs-toggle="modal"
-                data-bs-target="#exampleModal"
-                onClick={() => updateLanglat()}
               >
                 Save
               </button>
