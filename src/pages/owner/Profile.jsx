@@ -27,7 +27,6 @@ const Profile = () => {
 
   useEffect(() => {
     setProfile();
-    setMap();
   }, []);
 
   const setMap = (long, lat) => {
