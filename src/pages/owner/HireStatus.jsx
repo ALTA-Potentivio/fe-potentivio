@@ -4,8 +4,6 @@ import axios from "axios";
 
 import CardHire from "../../components/hire/CardHire";
 
-import image from "../../assets/image-3.png";
-
 const HireStatus = () => {
   const base_url = useSelector((state) => state.base_url);
   const token = localStorage.getItem("token");

@@ -1,10 +1,35 @@
 import { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
+import axios from "axios";
 
 import CardNotification from "../../components/notification/CardNotification";
 
 import image from "../../assets/image-3.png";
 
 const Notification = () => {
+  const base_url = useSelector((state) => state.base_url);
+  const token = localStorage.getItem("token");
+  const [dataNotif, setDataNotif] = useState([]);
+
+  useEffect(() => {
+    getNotif();
+  }, []);
+
+  const getNotif = () => {
+    axios
+      .get(`${base_url}/offer`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
   return (
     <>
       <div className="container mt-5">
