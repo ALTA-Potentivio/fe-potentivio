@@ -160,16 +160,16 @@ const CompleteOwner = () => {
             />
             <label htmlFor="floatingInput">Description</label>
           </div>
-          <div className="col-12 pe-5">
-            <button
-              className="botton-complete float-end"
-              type="submit"
-              onClick={() => submit()}
-            >
-              Let’s Get It
-            </button>
-          </div>
         </form>
+        <div className="col-12 pe-5">
+          <button
+            className="botton-complete float-end"
+            type="submit"
+            onClick={() => submit()}
+          >
+            Let’s Get It
+          </button>
+        </div>
       </div>
       <div
         className="modal fade"
