@@ -64,7 +64,7 @@ const CompleteArtist = () => {
     formData.append("account_number", noRek);
     formData.append("avatar", avatar);
     axios
-      .put(`${base_url}/artist/${id}`, formData, {
+      .put(`${base_url}/artist/profile`, formData, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
