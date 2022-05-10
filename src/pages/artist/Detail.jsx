@@ -77,7 +77,7 @@ const Detail = () => {
           icon: "success",
           confirmButtonText: "Berhasil",
         });
-        navigate("/owner");
+        navigate("/artist");
       })
       .catch((err) => {
         Swal.fire({

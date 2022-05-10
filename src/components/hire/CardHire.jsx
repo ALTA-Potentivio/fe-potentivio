@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import Swal from "sweetalert2";
 
@@ -9,6 +10,7 @@ const CardHire = ({ item, parentCallback }) => {
   const base_url = useSelector((state) => state.base_url);
   const token = localStorage.getItem("token");
   const [time, setTime] = useState("");
+  let navigate = useNavigate();
 
   useEffect(() => {
     getTime();
@@ -66,6 +68,26 @@ const CardHire = ({ item, parentCallback }) => {
       });
   };
 
+  const done = () => {
+    axios
+      .put(
+        `${base_url}/cafe/done/${item.id}`,
+        { id: item.id },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      )
+      .then((res) => {
+        console.log(res);
+        navigate("/owner/rating");
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
   return (
     <>
       <div className="row">
@@ -101,7 +123,13 @@ const CardHire = ({ item, parentCallback }) => {
             <div className="d-flex justify-content-evenly">
               <h3 className="pt-2">WAITING PAYMENT</h3>
               <button type="button" className="button-map">
-                PAY
+                <a
+                  href={`${item.paymentUrl}`}
+                  style={{ textDecoration: "none", color: "white" }}
+                  target="_blank"
+                >
+                  PAY
+                </a>
               </button>
             </div>
           </div>
@@ -110,6 +138,27 @@ const CardHire = ({ item, parentCallback }) => {
           <div className="col pt-4">
             <div className="d-flex justify-content-evenly">
               <h3 className="pt-2">REJECTED</h3>
+            </div>
+          </div>
+        )}
+        {item.status_cafe === "PAID" && (
+          <div className="col pt-4">
+            <div className="d-flex justify-content-evenly">
+              <h3 className="pt-2">PAID</h3>
+              <button
+                type="button"
+                className="button-map"
+                onClick={() => done()}
+              >
+                DONE
+              </button>
+            </div>
+          </div>
+        )}
+        {item.status_cafe === "canceled" && (
+          <div className="col pt-4">
+            <div className="d-flex justify-content-evenly">
+              <h3 className="pt-2">CANCELED</h3>
             </div>
           </div>
         )}

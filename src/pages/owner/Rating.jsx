@@ -4,11 +4,10 @@ import { Rating } from "react-simple-star-rating";
 import image from "../../assets/image-3.png";
 
 const RatingArtist = () => {
-  const [rating, setRating] = useState(30);
+  const [rating, setRating] = useState(0);
 
   const handleRating = (rate) => {
     setRating(rate);
-    // other logic
   };
 
   return (
@@ -23,7 +22,7 @@ const RatingArtist = () => {
         <br />
         <Rating
           onClick={handleRating}
-          ratingValue={rating} /* Available Props */
+          initialValue={rating} /* Available Props */
           className="mb-3"
           fillColor={`#53b8d1`}
         />
