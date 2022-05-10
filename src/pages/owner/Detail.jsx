@@ -172,7 +172,13 @@ const Detail = () => {
               </div>
             ) : (
               <div className="container-fluid d-flex flex-grow-1 flex-wrap justify-content-around pt-3 mt-3 mb-5">
-                <CardAvailable />
+                {detail.not_available.map((item) => {
+                  return (
+                    <div key={item.id}>
+                      <CardAvailable item={item} />
+                    </div>
+                  );
+                })}
               </div>
             )}
           </div>
