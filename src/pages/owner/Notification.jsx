@@ -23,25 +23,38 @@ const Notification = () => {
         },
       })
       .then((res) => {
-        console.log(res);
+        const data = res.data.data;
+        setDataNotif(data);
       })
       .catch((err) => {
         console.log(err);
       });
   };
 
-  return (
-    <>
-      <div className="container mt-5">
-        <div className="text-center mb-5">
-          <h3>See who wants to perform!</h3>
-        </div>
-        <div className="pt-5 pb-5 border-top border-bottom">
-          <CardNotification />
-        </div>
+  if (dataNotif.length === 0) {
+    return (
+      <div className="text-center">
+        <h1>data not found</h1>
       </div>
-    </>
-  );
+    );
+  } else {
+    return (
+      <>
+        <div className="container mt-5">
+          <div className="text-center mb-5">
+            <h3>See who wants to perform!</h3>
+          </div>
+          {dataNotif.map((item) => {
+            return (
+              <div className="pt-5 pb-5 border-top border-bottom" key={item.id}>
+                <CardNotification item={item} />
+              </div>
+            );
+          })}
+        </div>
+      </>
+    );
+  }
 };
 
 export default Notification;
