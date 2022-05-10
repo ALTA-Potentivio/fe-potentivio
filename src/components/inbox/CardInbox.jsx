@@ -92,6 +92,34 @@ const CardInbox = ({ item, parentCallback }) => {
       });
   };
 
+  const cancel = () => {
+    axios
+      .put(
+        `${base_url}/artist/cancel/${item.id}`,
+        {
+          id: item.id,
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      )
+      .then((res) => {
+        const data = res.data;
+        Swal.fire({
+          title: "Sukses",
+          text: `${data.message}`,
+          icon: "success",
+          confirmButtonText: "Berhasil",
+        });
+        parentCallback();
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
   return (
     <>
       <div className="row">
@@ -140,6 +168,27 @@ const CardInbox = ({ item, parentCallback }) => {
           <div className="col pt-4">
             <div className="d-flex justify-content-evenly">
               <h3 className="pt-2">REJECTED</h3>
+            </div>
+          </div>
+        )}
+        {item.status_artist === "PAID" && (
+          <div className="col pt-4">
+            <div className="d-flex justify-content-evenly">
+              <h3 className="pt-2">PAID</h3>
+              <button
+                type="button"
+                className="button-map"
+                onClick={() => cancel()}
+              >
+                CANCEL
+              </button>
+            </div>
+          </div>
+        )}
+        {item.status_artist === "canceled" && (
+          <div className="col pt-4">
+            <div className="d-flex justify-content-evenly">
+              <h3 className="pt-2">CANCELED</h3>
             </div>
           </div>
         )}

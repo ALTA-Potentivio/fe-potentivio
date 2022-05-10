@@ -13,9 +13,9 @@ const HireStatus = () => {
     getHire();
   }, []);
 
-  setTimeout(() => {
-    getHire();
-  }, 100000);
+  // setTimeout(() => {
+  //   getHire();
+  // }, 50000);
 
   const getHire = () => {
     axios
