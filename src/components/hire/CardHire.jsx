@@ -100,12 +100,16 @@ const CardHire = ({ item, parentCallback }) => {
           <div className="col pt-4">
             <div className="d-flex justify-content-evenly">
               <h3 className="pt-2">WAITING PAYMENT</h3>
-              <button
-                type="button"
-                className="button-map"
-              >
+              <button type="button" className="button-map">
                 PAY
               </button>
+            </div>
+          </div>
+        )}
+        {item.status_cafe === "Rejected" && (
+          <div className="col pt-4">
+            <div className="d-flex justify-content-evenly">
+              <h3 className="pt-2">REJECTED</h3>
             </div>
           </div>
         )}

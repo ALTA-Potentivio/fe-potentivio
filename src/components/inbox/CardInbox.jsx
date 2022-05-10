@@ -136,6 +136,13 @@ const CardInbox = ({ item, parentCallback }) => {
             </div>
           </div>
         )}
+        {item.status_artist === "Rejected" && (
+          <div className="col pt-4">
+            <div className="d-flex justify-content-evenly">
+              <h3 className="pt-2">REJECTED</h3>
+            </div>
+          </div>
+        )}
       </div>
     </>
   );
