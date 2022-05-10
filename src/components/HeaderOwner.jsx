@@ -189,7 +189,7 @@ const HeaderOwner = () => {
                   className="modal-footer border-0"
                   style={{ padding: "2rem", paddingTop: "0.75rem" }}
                 >
-                  <a href="#">
+                  <a href="/owner/notification">
                     <img
                       style={{ marginRight: "0.75rem", width: "25px" }}
                       src={`${notif}`}
@@ -310,7 +310,7 @@ const HeaderOwner = () => {
                 </form>
               </li>
             </ul>
-            <a href="#">
+            <a href="/owner/notification">
               <img
                 style={{ marginRight: "0.75rem", width: "25px" }}
                 src={`${notif}`}
