@@ -48,6 +48,7 @@ const Profile = () => {
       .then((res) => {
         let data = res.data.data;
         formatPrice(data.price);
+        setVideoYt("");
         setProfileArtist(data);
       })
       .catch((err) => {
@@ -151,6 +152,7 @@ const Profile = () => {
                   className="form-control"
                   id="floatingInput"
                   style={{ borderRadius: "21px" }}
+                  value={videoYt}
                   onChange={(e) => setVideoYt(e.target.value)}
                 />
                 <label htmlFor="floatingInput">Add link video</label>
