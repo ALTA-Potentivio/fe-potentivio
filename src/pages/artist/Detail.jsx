@@ -6,7 +6,7 @@ import Map, { Marker } from "react-map-gl";
 import axios from "axios";
 import Swal from "sweetalert2";
 
-import peta from "../../assets/image-7.png";
+import image from "../../assets/placeholder-image.jpg";
 
 const MAPBOX_TOKEN =
   "pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4M29iazA2Z2gycXA4N2pmbDZmangifQ.-g_vE53SD2WrJ6tFX7QHmA";
@@ -103,11 +103,19 @@ const Detail = () => {
         <div className="container mt-3">
           <div className="row mb-3">
             <div className="col-3">
-              <img
-                src={`${dataDetail.avatar}`}
-                className="img-fluid rounded"
-                alt="..."
-              />
+              {dataDetail.avatar === null ? (
+                <img
+                  src={`${image}`}
+                  className="img-fluid rounded-start"
+                  alt="..."
+                />
+              ) : (
+                <img
+                  src={`${dataDetail.avatar}`}
+                  className="img-fluid rounded"
+                  alt="..."
+                />
+              )}
             </div>
             <div className="col-6">
               <button

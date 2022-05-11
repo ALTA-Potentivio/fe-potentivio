@@ -22,7 +22,7 @@ const RatingArtist = () => {
         <br />
         <Rating
           onClick={handleRating}
-          initialValue={rating} /* Available Props */
+          initialValue={rating}
           className="mb-3"
           fillColor={`#53b8d1`}
         />

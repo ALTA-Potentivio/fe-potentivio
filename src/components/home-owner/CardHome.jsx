@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
-import image from "../../assets/image-3.png";
+import image from "../../assets/placeholder-image.jpg";
 
 const CardHome = ({ item }) => {
   const [price, setPrice] = useState(0);
@@ -29,8 +29,11 @@ const CardHome = ({ item }) => {
 
   return (
     <>
-      <Link to={`/owner/detail-owner/${item.id}`} style={{textDecoration: "none", color: "black"}}>
-        <div className="mt-3 d-flex justify-content-center">
+      <div className="mt-3 d-flex justify-content-center">
+        <Link
+          to={`/owner/detail-owner/${item.id}`}
+          style={{ textDecoration: "none", color: "black" }}
+        >
           <div
             className="card mb-3"
             style={{
@@ -79,8 +82,8 @@ const CardHome = ({ item }) => {
               </div>
             </div>
           </div>
-        </div>
-      </Link>
+        </Link>
+      </div>
     </>
   );
 };

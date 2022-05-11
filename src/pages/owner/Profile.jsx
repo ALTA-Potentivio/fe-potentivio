@@ -124,7 +124,7 @@ const Profile = () => {
               <i
                 className="bi bi-pencil-square position-absolute bottom-0 end-0"
                 data-bs-toggle="modal"
-                data-bs-target="#modalImage"
+                data-bs-target="#modalProfile"
               ></i>
             </div>
             <div className="col-4">
@@ -132,7 +132,7 @@ const Profile = () => {
               <p className="text-capitalize">by {profileOwner.owner}</p>
               <p className="text-capitalize">{profileOwner.address}</p>
               <p>{profileOwner.phone_number}</p>
-              <p>OPEN 9.30 - 21.00</p>
+              <p>OPEN {profileOwner.opening_hours}</p>
               <p>No Rekening: {profileOwner.account_number}</p>
               <ModalEdit
                 item={profileOwner}
@@ -163,23 +163,23 @@ const Profile = () => {
               ) : (
                 <img
                   src={`${album}`}
-                  className="img-fluid rounded me-4"
+                  className="img-fluid rounded me-4 mb-3"
                   alt="..."
                 />
               )}
               <img
                 src={`${addImage}`}
-                className="img-fluid rounded me-4"
+                className="img-fluid rounded me-4 mb-3"
                 alt="..."
                 data-bs-toggle="modal"
-                data-bs-target="#exampleModal"
+                data-bs-target="#modalImage"
               />
             </div>
           </div>
         </div>
         <div
           className="modal fade"
-          id="exampleModal"
+          id="modalImage"
           tabIndex="-1"
           aria-labelledby="exampleModalLabel"
           aria-hidden="true"
@@ -223,7 +223,7 @@ const Profile = () => {
         </div>
         <div
           className="modal fade"
-          id="modalImage"
+          id="modalProfile"
           tabIndex="-1"
           aria-labelledby="exampleModalLabel"
           aria-hidden="true"

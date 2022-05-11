@@ -39,7 +39,7 @@ const HeaderOwner = () => {
     <>
       <div className="header-3-2 container-xxl mx-auto p-0 position-relative">
         <nav className="navbar navbar-expand-lg navbar-light">
-          <a href="#">
+          <a href="/owner">
             <img style={{ width: "120px" }} src={`${logo}`} alt="" />
           </a>
           <button

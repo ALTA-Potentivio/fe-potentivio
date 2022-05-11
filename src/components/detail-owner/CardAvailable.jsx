@@ -43,6 +43,7 @@ const CardAvailable = ({ item }) => {
     var dateString = day +", "+ date + " " + month + " " + year;
     setTime(dateString);
   };
+  
   return (
     <>
       <div
@@ -62,7 +63,7 @@ const CardAvailable = ({ item }) => {
               <p className="card-text">
                 <small className="text-muted">{time}</small>
               </p>
-              <h5 className="card-title">{item.cafe_name}</h5>
+              <h5 className="card-title text-capitalize">{item.cafe_name}</h5>
             </div>
           </div>
         </div>

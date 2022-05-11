@@ -189,7 +189,15 @@ const Detail = () => {
                 <h1>No history yet</h1>
               </div>
             ) : (
-              <CardPerforme />
+              <div className="container-fluid pt-3 mt-3 mb-5">
+                {detail.hire_history.map((item) => {
+                  return (
+                    <div key={item.id}>
+                      <CardPerforme item={item} />
+                    </div>
+                  );
+                })}
+              </div>
             )}
           </div>
         </div>

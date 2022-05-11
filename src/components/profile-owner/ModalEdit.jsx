@@ -34,6 +34,8 @@ const ModalEdit = ({ item, parentCallback }) => {
     setEmail(item.email);
     setAddress(item.address);
     setPhoneNumber(item.phone_number);
+    setOpeningHours(item.opening_hours);
+    setNoRek(item.account_number);
     setLongitude(item.longitude);
     setLatitude(item.latitude);
     setDescription(item.description);
@@ -198,6 +200,8 @@ const ModalEdit = ({ item, parentCallback }) => {
                       className="form-control"
                       id="openHours"
                       style={{ borderRadius: "21px" }}
+                      value={openingHours}
+                      onChange={(e) => setOpeningHours(e.target.value)}
                       required
                     />
                     <label htmlFor="openHours">
