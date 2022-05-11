@@ -175,7 +175,7 @@ const Profile = () => {
               <div className="container-fluid d-flex flex-grow-1 flex-wrap justify-content-around pt-3 mt-3 mb-5">
                 {profileArtist.video_artist.map((item) => {
                   return (
-                    <div key={item.id}>
+                    <div key={item.id} className="mb-3">
                       <Video item={item} parentCallback={() => setProfile()} />
                     </div>
                   );
