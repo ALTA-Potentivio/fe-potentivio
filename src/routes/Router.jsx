@@ -41,7 +41,7 @@ function Index() {
             <Route path="hire-owner" element={<HireStatus />} />
             <Route path="notification" element={<Notification />} />
             <Route path="profile-owner" element={<ProfileOwner />} />
-            <Route path="rating" element={<Rating />} />
+            <Route path="rating/:id" element={<Rating />} />
           </Route>
           <Route path="/complete-artist" element={<CompleteArtist />} />
           <Route path="/artist" element={<LayoutArtist />}>

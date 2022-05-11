@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Rating } from "react-simple-star-rating";
 
 import image from "../../assets/image-3.png";
 
@@ -31,7 +32,7 @@ const CardPerforme = ({ item }) => {
       "Selasa",
       "Rabu",
       "Kamis",
-      "Jum&#39;at",
+      "Jum'at",
       "Sabtu",
     ];
     var date = temp.getDate();
@@ -46,13 +47,20 @@ const CardPerforme = ({ item }) => {
 
   return (
     <>
-      <div className="d-flex w-100" style={{ height: "80px" }}>
+      <div className="d-flex w-100 bd-highlight" style={{ height: "80px" }}>
         <img src={`${image}`} className="img-fluid rounded-circle" alt="..." />
         <div className="ms-3 mt-3">
           <h5 className="text-capitalize">{item.cafe_name}</h5>
           <p>
             <small>{time}</small>
           </p>
+        </div>
+        <div className="ms-auto p-2 bd-highlight">
+          <Rating
+            initialValue={item.rating}
+            className="mb-3"
+            fillColor={`#53b8d1`}
+          />
         </div>
       </div>
       <p className="mt-3">{item.comment}</p>

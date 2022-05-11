@@ -31,7 +31,7 @@ const CardAvailable = ({ item }) => {
       "Selasa",
       "Rabu",
       "Kamis",
-      "Jum&#39;at",
+      "Jum'at",
       "Sabtu",
     ];
     var date = temp.getDate();

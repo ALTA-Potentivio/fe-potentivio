@@ -81,7 +81,7 @@ const CardHire = ({ item, parentCallback }) => {
       )
       .then((res) => {
         console.log(res);
-        navigate("/owner/rating");
+        navigate(`/owner/rating/${item.id}`);
       })
       .catch((err) => {
         console.log(err);
