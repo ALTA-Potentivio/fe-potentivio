@@ -138,10 +138,10 @@ const CardInbox = ({ item, parentCallback }) => {
         </div>
         {item.status_artist === "waiting" && (
           <div className="col pt-4">
-            <div className="d-flex justify-content-evenly">
+            <div className="d-flex justify-content-center">
               <button
                 type="button"
-                className="button-map"
+                className="button-map me-3"
                 style={{ backgroundColor: "white", color: "#53b8d1" }}
                 onClick={() => reject()}
               >
@@ -160,21 +160,21 @@ const CardInbox = ({ item, parentCallback }) => {
         {item.status_artist === "waiting payment" && (
           <div className="col pt-4">
             <div className="d-flex justify-content-evenly">
-              <h3 className="pt-2">WAITING PAYMENT</h3>
+              <h6 className="pt-2">WAITING PAYMENT</h6>
             </div>
           </div>
         )}
         {item.status_artist === "Rejected" && (
           <div className="col pt-4">
             <div className="d-flex justify-content-evenly">
-              <h3 className="pt-2">REJECTED</h3>
+              <h6 className="pt-2">REJECTED</h6>
             </div>
           </div>
         )}
         {item.status_artist === "PAID" && (
           <div className="col pt-4">
             <div className="d-flex justify-content-evenly">
-              <h3 className="pt-2">PAID</h3>
+              <h6 className="pt-2">PAID</h6>
               <button
                 type="button"
                 className="button-map"
@@ -188,14 +188,14 @@ const CardInbox = ({ item, parentCallback }) => {
         {item.status_artist === "canceled" && (
           <div className="col pt-4">
             <div className="d-flex justify-content-evenly">
-              <h3 className="pt-2">CANCELED</h3>
+              <h6 className="pt-2">CANCELED</h6>
             </div>
           </div>
         )}
         {item.status_artist === "done" && (
           <div className="col pt-4">
             <div className="d-flex justify-content-evenly">
-              <h3 className="pt-2">DONE</h3>
+              <h6 className="pt-2">DONE</h6>
             </div>
           </div>
         )}

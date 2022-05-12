@@ -123,10 +123,10 @@ const Detail = () => {
                 />
               )}
             </div>
-            <div className="col pt-4">
+            <div className="col">
               <h2 className="text-capitalize">{detail.artist_name}</h2>
-              <p className="text-capitalize pt-2">{detail.address}</p>
-              <div className="d-flex mb-2">
+              <p className="text-capitalize">{detail.address}</p>
+              <div className="d-flex">
                 <p className="pt-2 pe-2">Rating :</p>
                 <div>
                   <Rating
