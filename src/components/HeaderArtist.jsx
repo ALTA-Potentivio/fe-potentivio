@@ -14,7 +14,7 @@ const HeaderArtist = () => {
   const token = localStorage.getItem("token");
   let navigate = useNavigate();
   let location = useLocation();
-  const [dataArtist, setDataArtist] = useState([])
+  const [dataArtist, setDataArtist] = useState([]);
 
   useEffect(() => {
     getProfile();
@@ -29,12 +29,12 @@ const HeaderArtist = () => {
       })
       .then((res) => {
         let data = res.data.data;
-        setDataArtist(data)
+        setDataArtist(data);
       })
       .catch((err) => {
-        navigate("/")
+        navigate("/");
       });
-  }
+  };
 
   return (
     <>
@@ -192,7 +192,12 @@ const HeaderArtist = () => {
                   style={{ padding: "2rem", paddingTop: "0.75rem" }}
                 >
                   <a href="/artist/profile-artist">
-                    <img style={{ width: "30px" }} src={`${dataArtist.avatar}`} alt="" />
+                    <img
+                      className="rounded-circle"
+                      style={{ width: "30px" }}
+                      src={`${dataArtist.avatar}`}
+                      alt=""
+                    />
                   </a>
                 </div>
               </div>
@@ -302,7 +307,12 @@ const HeaderArtist = () => {
               </li>
             </ul>
             <a href="/artist/profile-artist">
-              <img className="" style={{ width: "30px" }} src={`${dataArtist.avatar}`} alt="" />
+              <img
+                className="rounded-circle"
+                style={{ width: "30px" }}
+                src={`${dataArtist.avatar}`}
+                alt=""
+              />
             </a>
           </div>
         </nav>

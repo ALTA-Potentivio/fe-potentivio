@@ -198,6 +198,7 @@ const HeaderOwner = () => {
                   </a>
                   <a href="/owner/profile-owner">
                     <img
+                      className="rounded-circle"
                       style={{ width: "30px" }}
                       src={`${profileOwner.avatar}`}
                       alt=""
@@ -319,6 +320,7 @@ const HeaderOwner = () => {
             </a>
             <a href="/owner/profile-owner">
               <img
+                className="rounded-circle"
                 style={{ width: "30px" }}
                 src={`${profileOwner.avatar}`}
                 alt=""

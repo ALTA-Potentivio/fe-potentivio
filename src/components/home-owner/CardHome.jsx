@@ -44,7 +44,7 @@ const CardHome = ({ item }) => {
           >
             <div className="row g-0">
               <div className="col-md-3 pt-1 ps-2">
-                {item.avatar === null ? (
+                {item.avatar === null || item.avatar === "" ? (
                   <img
                     src={`${image}`}
                     className="img-fluid rounded-start"
