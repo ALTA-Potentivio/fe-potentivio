@@ -153,10 +153,10 @@ const Detail = () => {
                   <h1>No image yet</h1>
                 </div>
               ) : (
-                <>
+                <div className="d-flex">
                   {dataDetail.ImageCafe.map((item) => {
                     return (
-                      <div className="d-flex" key={item.ID}>
+                      <div key={item.ID}>
                         <img
                           src={`${item.image_url}`}
                           style={{ width: "190px", height: "190px" }}
@@ -166,7 +166,7 @@ const Detail = () => {
                       </div>
                     );
                   })}
-                </>
+                </div>
               )}
             </div>
           </div>
