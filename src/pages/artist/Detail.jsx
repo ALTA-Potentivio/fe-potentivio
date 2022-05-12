@@ -103,7 +103,7 @@ const Detail = () => {
         <div className="container mt-3">
           <div className="row mb-3">
             <div className="col-3">
-              {dataDetail.avatar === null ? (
+              {dataDetail.avatar === null || dataDetail.avatar === "" ? (
                 <img
                   src={`${image}`}
                   className="img-fluid rounded-start"

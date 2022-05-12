@@ -12,6 +12,8 @@ import Video from "../../components/detail-owner/Video";
 
 import axios from "axios";
 
+import image from "../../assets/placeholder-image.jpg";
+
 const Detail = () => {
   const base_url = useSelector((state) => state.base_url);
   const token = localStorage.getItem("token");
@@ -108,11 +110,19 @@ const Detail = () => {
         <div className="container mt-3">
           <div className="row mb-3">
             <div className="col-3">
-              <img
-                src={`${detail.avatar}`}
-                className="img-fluid rounded"
-                alt="..."
-              />
+              {detail.avatar === null || detail.avatar === "" ? (
+                <img
+                  src={`${image}`}
+                  className="img-fluid rounded-start"
+                  alt="..."
+                />
+              ) : (
+                <img
+                  src={`${detail.avatar}`}
+                  className="img-fluid rounded"
+                  alt="..."
+                />
+              )}
             </div>
             <div className="col pt-4">
               <h2 className="text-capitalize">{detail.artist_name}</h2>
