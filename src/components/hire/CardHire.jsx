@@ -107,7 +107,7 @@ const CardHire = ({ item, parentCallback }) => {
         {item.status_cafe === "waiting" && (
           <div className="col pt-4">
             <div className="d-flex justify-content-evenly">
-              <h3 className="pt-2">WAITING..</h3>
+              <h6 className="pt-2">WAITING..</h6>
               <button
                 type="button"
                 className="button-map"
@@ -120,8 +120,8 @@ const CardHire = ({ item, parentCallback }) => {
         )}
         {item.status_cafe === "waiting payment" && (
           <div className="col pt-4">
-            <div className="d-flex justify-content-evenly">
-              <h3 className="pt-2">WAITING PAYMENT</h3>
+            <div className="d-flex justify-content-center">
+              <h6 className="pt-3 me-3" style={{color:'orange'}}>WAITING PAYMENT</h6>
               <button type="button" className="button-map">
                 <a
                   href={`${item.paymentUrl}`}
@@ -137,14 +137,14 @@ const CardHire = ({ item, parentCallback }) => {
         {item.status_cafe === "Rejected" && (
           <div className="col pt-4">
             <div className="d-flex justify-content-evenly">
-              <h3 className="pt-2">REJECTED</h3>
+              <h6 className="pt-2" style={{color:'red'}}>REJECTED</h6>
             </div>
           </div>
         )}
         {item.status_cafe === "PAID" && (
-          <div className="col pt-4">
-            <div className="d-flex justify-content-evenly">
-              <h3 className="pt-2">PAID</h3>
+          <div className="col pt-4 ms-3">
+            <div className="d-flex justify-content-center">
+              <h6 className="pt-3 me-3">PAID</h6>
               <button
                 type="button"
                 className="button-map"
@@ -158,14 +158,14 @@ const CardHire = ({ item, parentCallback }) => {
         {item.status_cafe === "canceled" && (
           <div className="col pt-4">
             <div className="d-flex justify-content-evenly">
-              <h3 className="pt-2">CANCELED</h3>
+              <h6 className="pt-2">CANCELED</h6>
             </div>
           </div>
         )}
         {item.status_cafe === "done" && (
           <div className="col pt-4">
             <div className="d-flex justify-content-evenly">
-              <h3 className="pt-2">DONE</h3>
+              <h6 className="pt-2">DONE</h6>
             </div>
           </div>
         )}
