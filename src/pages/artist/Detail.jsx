@@ -156,9 +156,10 @@ const Detail = () => {
                 <>
                   {dataDetail.ImageCafe.map((item) => {
                     return (
-                      <div key={item.ID}>
+                      <div className="d-flex" key={item.ID}>
                         <img
                           src={`${item.image_url}`}
+                          style={{ width: "190px", height: "190px" }}
                           className="img-fluid rounded me-4"
                           alt="..."
                         />
