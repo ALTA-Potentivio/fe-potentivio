@@ -23,7 +23,6 @@ const Inbox = () => {
       .then((res) => {
         const data = res.data;
         setDataInbox(data.data);
-        console.log(data);
       })
       .catch((err) => {
         console.log(err);

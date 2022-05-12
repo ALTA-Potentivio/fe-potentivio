@@ -39,7 +39,6 @@ const ModalEdit = ({ item, parentCallback }) => {
     setLongitude(item.longitude);
     setLatitude(item.latitude);
     setDescription(item.description);
-    console.log(item);
   }, []);
 
   const updateCafeName = (event) => {

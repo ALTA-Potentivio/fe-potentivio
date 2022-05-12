@@ -27,7 +27,6 @@ const HireStatus = () => {
       .then((res) => {
         const data = res.data;
         setDataHire(data.data);
-        console.log(data);
       })
       .catch((err) => {
         console.log(err);

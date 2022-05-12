@@ -17,7 +17,6 @@ const Video = ({ item }) => {
       setIdYoutube(idy[0]);
     } else {
       setIdYoutube(id[1]);
-      console.log();
     }
   };
 

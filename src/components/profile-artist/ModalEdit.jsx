@@ -77,7 +77,6 @@ const ModalEdit = ({ item, parentCallback }) => {
   };
 
   const submit = () => {
-    // console.log(valueCtgy);
     var formData = new FormData();
     formData.append("artist_name", artistName);
     formData.append("email", email);

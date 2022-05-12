@@ -142,7 +142,6 @@ const Profile = () => {
             <div className="col">
               <Map
                 {...viewState}
-                // onMove={(evt) => console.log(evt)}
                 mapStyle="mapbox://styles/mapbox/streets-v9"
                 mapboxAccessToken={MAPBOX_TOKEN}
               >

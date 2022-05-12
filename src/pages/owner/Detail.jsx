@@ -63,7 +63,6 @@ const Detail = () => {
     const { id } = params;
     const temp = valueCalendar.toISOString();
     const date = temp.split("T");
-    console.log(date);
     axios
       .post(
         `${base_url}/hire/${id}`,
