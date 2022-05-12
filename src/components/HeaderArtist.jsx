@@ -1,5 +1,8 @@
 import { useEffect, useState } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
+import { reduxAction } from "../utils/redux/actions/action";
+import axios from "axios";
 
 import "../styles/headerowner.css";
 import logo from "../assets/headerlogo.png";
@@ -7,8 +10,31 @@ import notif from "../assets/notifs.png";
 import profile from "../assets/profile.png";
 
 const HeaderArtist = () => {
+  const base_url = useSelector((state) => state.base_url);
+  const token = localStorage.getItem("token");
   let navigate = useNavigate();
   let location = useLocation();
+  const [dataArtist, setDataArtist] = useState([])
+
+  useEffect(() => {
+    getProfile();
+  }, []);
+
+  const getProfile = () => {
+    axios
+      .get(`${base_url}/artist/profile`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
+      .then((res) => {
+        let data = res.data.data;
+        setDataArtist(data)
+      })
+      .catch((err) => {
+        navigate("/")
+      });
+  }
 
   return (
     <>
@@ -166,7 +192,7 @@ const HeaderArtist = () => {
                   style={{ padding: "2rem", paddingTop: "0.75rem" }}
                 >
                   <a href="/artist/profile-artist">
-                    <img style={{ width: "30px" }} src={`${profile}`} alt="" />
+                    <img style={{ width: "30px" }} src={`${dataArtist.avatar}`} alt="" />
                   </a>
                 </div>
               </div>
@@ -276,7 +302,7 @@ const HeaderArtist = () => {
               </li>
             </ul>
             <a href="/artist/profile-artist">
-              <img style={{ width: "30px" }} src={`${profile}`} alt="" />
+              <img className="" style={{ width: "30px" }} src={`${dataArtist.avatar}`} alt="" />
             </a>
           </div>
         </nav>
