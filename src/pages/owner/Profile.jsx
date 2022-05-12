@@ -159,21 +159,38 @@ const Profile = () => {
             <p>{profileOwner.description}</p>
             <div className="mb-5">
               {profileOwner.ImageCafe.length === 0 ? (
-                <></>
+                <>
+                  <img
+                    src={`${addImage}`}
+                    className="img-fluid rounded mb-3"
+                    alt="..."
+                    data-bs-toggle="modal"
+                    data-bs-target="#modalImage"
+                  />
+                </>
               ) : (
-                <img
-                  src={`${album}`}
-                  className="img-fluid rounded me-4 mb-3"
-                  alt="..."
-                />
+                <div className="d-flex">
+                  {profileOwner.ImageCafe.map((item) => {
+                    return (
+                      <div key={item.ID}>
+                        <img
+                          src={`${item.image_url}`}
+                          style={{width:"190px", height: "190px"}}
+                          className="img-fluid rounded me-4 mb-3"
+                          alt="..."
+                        />
+                      </div>
+                    );
+                  })}
+                  <img
+                    src={`${addImage}`}
+                    className="img-fluid rounded mb-3"
+                    alt="..."
+                    data-bs-toggle="modal"
+                    data-bs-target="#modalImage"
+                  />
+                </div>
               )}
-              <img
-                src={`${addImage}`}
-                className="img-fluid rounded me-4 mb-3"
-                alt="..."
-                data-bs-toggle="modal"
-                data-bs-target="#modalImage"
-              />
             </div>
           </div>
         </div>
