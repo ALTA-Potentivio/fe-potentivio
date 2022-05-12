@@ -16,6 +16,7 @@ const Profile = () => {
 
   const [price, setPrice] = useState(0);
   const [videoYt, setVideoYt] = useState("");
+  const [avatar, setAvatar] = useState("");
 
   useEffect(() => {
     setProfile();
@@ -89,6 +90,30 @@ const Profile = () => {
       });
   };
 
+  const updateImage = () => {
+    var formData = new FormData();
+    formData.append("avatar", avatar);
+    axios
+      .put(`${base_url}/artist/profile`, formData, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
+      .then((res) => {
+        const data = res.data;
+        Swal.fire({
+          title: "Sukses",
+          text: `${data.message}`,
+          icon: "success",
+          confirmButtonText: "Berhasil",
+        });
+        setProfile();
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
   if (profileArtist.length === 0) {
     return (
       <div className="text-center">
@@ -102,12 +127,17 @@ const Profile = () => {
       <>
         <div className="container mt-3">
           <div className="row mb-3">
-            <div className="col-3">
+            <div className="col-3 position-relative">
               <img
                 src={`${profileArtist.avatar}`}
-                className="img-fluid rounded"
+                className="img-fluid rounded position-absolute top-50 start-50 translate-middle"
                 alt="..."
               />
+              <i
+                className="bi bi-pencil-square position-absolute bottom-0 end-0"
+                data-bs-toggle="modal"
+                data-bs-target="#modalProfile"
+              ></i>
             </div>
             <div className="col pt-4">
               <h2>{profileArtist.artist_name}</h2>
@@ -184,6 +214,50 @@ const Profile = () => {
                 })}
               </div>
             )}
+          </div>
+        </div>
+        <div
+          className="modal fade"
+          id="modalProfile"
+          tabIndex="-1"
+          aria-labelledby="exampleModalLabel"
+          aria-hidden="true"
+        >
+          <div className="modal-dialog">
+            <div className="modal-content">
+              <div className="modal-header">
+                <h5 className="modal-title" id="exampleModalLabel">
+                  Change Image
+                </h5>
+                <button
+                  type="button"
+                  className="btn-close"
+                  data-bs-dismiss="modal"
+                  aria-label="Close"
+                ></button>
+              </div>
+              <div className="modal-body">
+                <div className="input-group mb-3" style={{ width: "476px" }}>
+                  <input
+                    type="file"
+                    className="form-control"
+                    id="inputGroupFile02"
+                    style={{ borderRadius: "21px" }}
+                    onChange={(e) => setAvatar(e.target.files[0])}
+                  />
+                </div>
+              </div>
+              <div className="modal-footer">
+                <button
+                  type="button"
+                  className="btn btn-primary"
+                  data-bs-dismiss="modal"
+                  onClick={() => updateImage()}
+                >
+                  Save
+                </button>
+              </div>
+            </div>
           </div>
         </div>
       </>
