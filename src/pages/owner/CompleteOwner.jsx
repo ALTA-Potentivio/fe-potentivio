@@ -4,6 +4,13 @@ import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
+import "mapbox-gl/dist/mapbox-gl.css";
+import mapboxgl from "mapbox-gl";
+
+mapboxgl.workerClass =
+  // eslint-disable-next-line import/no-webpack-loader-syntax
+  require("worker-loader!mapbox-gl/dist/mapbox-gl-csp-worker").default;
+
 const MAPBOX_TOKEN =
   "pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4M29iazA2Z2gycXA4N2pmbDZmangifQ.-g_vE53SD2WrJ6tFX7QHmA";
 
